@@ -15,3 +15,15 @@ module.exports.addUser = (first, last, email, hashedPw) => {
     const params = [first, last, email, hashedPw];
     return db.query(q, params);
 };
+
+module.exports.getStoredPassword = (email) => {
+    const q = `SELECT hashed_pw FROM users WHERE email = $1`;
+    const params = [email];
+    return db.query(q, params);
+};
+
+module.exports.getUserIdByEmail = (email) => {
+    const q = `SELECT id FROM users WHERE email = $1`;
+    const params = [email];
+    return db.query(q, params);
+};
