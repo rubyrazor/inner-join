@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 export default class Registration extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            error: false
+        };
     }
     handleChange(e) {
         this.setState({
-            [e.target.name]: e.target.value, //Before ES6: var obj = {}; obj[e.target.name] = ...
+            [e.target.name]: e.target.value,
         });
     }
     submit() {
@@ -27,19 +29,21 @@ export default class Registration extends React.Component {
         })
             .then((resp) => resp.json())
             .then((data) => {
+                console.log("Got here!");
                 if (data.success) {
                     location.replace("/");
+                    console.log("Successfull registration");
                 } else {
                     this.setState({
                         error: true,
-                    }); //setState is asynchronos, so we need to pass a callback "error: true}, () => console.log(this.state)")"; cannot simply log after calling setState.
+                    }); 
                 }
             });
     }
     render() {
         return (
             <div>
-                <Link to="/login">Click here to log in</Link>;
+                <Link to="/login">Click here to log in</Link>
                 <div>
                     {this.state.error && (
                         <div className="error">Oops, something went wrong!</div>

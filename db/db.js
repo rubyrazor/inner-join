@@ -27,3 +27,42 @@ module.exports.getUserIdByEmail = (email) => {
     const params = [email];
     return db.query(q, params);
 };
+
+module.exports.checkEmail = (email) => {
+    const q = `SELECT * FROM users WHERE email = $1`;
+    const params = [email];
+    return db.query(q, params);
+};
+
+module.exports.storeVerCode = (email, verCode) => {
+    const q = `INSERT INTO verification (email, ver_code)
+                VALUES ($1, $2)`;
+    const params = [email, verCode];
+    return db.query(q, params);
+};
+
+module.exports.verifyVerCode = (email) => {
+    const q = `SELECT ver_code FROM verification
+                WHERE email = $1
+                ORDER BY created_at DESC
+                LIMIT 1`;
+    const params = [email];
+    return db.query(q, params);
+};
+
+module.exports.updatePassword = (email, newHashedPass) => {
+    const q = `UPDATE users
+                SET hashed_pw = $1
+                WHERE email = $2`;
+    const params = [newHashedPass, email];
+    return db.query(q, params);
+};
+
+module.exports.updateProfilePic = (userId, url) => {
+    const q = `Update users
+                SET profile_pic_url = $1
+                WHERE id = $2`;
+    
+    const params = [url, userId];
+    return db.query(q, params);
+};

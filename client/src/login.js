@@ -30,8 +30,10 @@ export default class Login extends React.Component {
         })
             .then((resp) => resp.json())
             .then((data) => {
+                console.log(data);
                 if (data.success == true) {
                     console.log("Successfull login");
+                    location.replace("/");
                 } else {
                     this.setState({
                         error: true,
@@ -42,7 +44,12 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <Link to="/">Click here to register</Link>;
+                <div>
+                    <Link to="/">Click here to register</Link>
+                </div>
+                <div>
+                    <Link to="/password/reset">Reset password</Link>
+                </div>
                 <div>
                     {this.state.error && (
                         <div className="error">Oops, something went wrong!</div>

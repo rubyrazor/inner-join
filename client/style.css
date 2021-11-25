@@ -2,7 +2,45 @@ body {
     background-color: hotpink;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 img {
     height: 50%;
     width: 50%;
+}
+
+#profilePic {
+    height: 100px;
+    width: 100px;
+}
+
+#logoInApp {
+    height: 100px;
+    width: 100px;
+}
+
+/* ---------------------- */
+/* UPLOADER */
+/* ---------------------- */
+#modal {
+    position: fixed;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#helper-div1 {
+    height: 200px;
+    width: 200px;
+    background: white;
 }
