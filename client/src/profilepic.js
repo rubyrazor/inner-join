@@ -1,4 +1,4 @@
-export default function ProfilePic({ first, last, profilePicUrl, toggleUploader }) {
+export default function ProfilePic({ first, last, profilePicUrl, toggleUploader, imageSize }) {
     
     profilePicUrl = profilePicUrl || "/default.png";
    
@@ -6,9 +6,9 @@ export default function ProfilePic({ first, last, profilePicUrl, toggleUploader 
         <>
             <img
                 src={profilePicUrl}
-                alt= {`${first}, ${last}`}
-                id="profilePic"
-                onClick = {toggleUploader}
+                alt={`${first}, ${last}`}
+                onClick={toggleUploader}
+                className={imageSize} 
             />
         </>
     );

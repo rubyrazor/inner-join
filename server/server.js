@@ -5,6 +5,7 @@ const path = require("path");
 const { authRouter } = require("../routers/auth-router.js");
 const { resetRouter } = require("../routers/reset-router.js");
 const { profileRouter } = require("../routers/profile-router.js");
+const { findRouter } = require("../routers/findpeople-router.js");
 
 // ---------
 // Cookie-Session
@@ -49,6 +50,7 @@ app.use(express.json());
 app.use(authRouter);
 app.use(resetRouter);
 app.use(profileRouter);
+app.use(findRouter);
 
 // ----------
 // GET ROUTES

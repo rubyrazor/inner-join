@@ -12,9 +12,18 @@ img {
     width: 50%;
 }
 
-#profilePic {
-    height: 100px;
-    width: 100px;
+.smallProfilePic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid red;
+}
+
+.bigProfilePic {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid red;
 }
 
 #logoInApp {
@@ -43,4 +52,43 @@ img {
     height: 200px;
     width: 200px;
     background: white;
+}
+
+#helper-div2 {
+    display: flex;
+    align-items: center;
+}
+
+#helper-div3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#helper-div4 {
+    margin-bottom: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+#helper-div5 {
+    margin-left: 50px;
+}
+
+#helper-div6 {
+    height: 100px;
+    width: 150px;
+    background-color: grey;
+    border: 1px solid black;
+}
+
+/* #helper-div7 {
+    display: flex;
+} */
+/* HERE!!!! */
+
+textarea {
+    height: 100px;
+    width: 150px; 
 }

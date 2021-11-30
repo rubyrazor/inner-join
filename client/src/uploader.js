@@ -4,7 +4,6 @@ export default class Uploader extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: this.props.userId,
             newProfilePic: null,
             error: false,
         };
@@ -22,14 +21,18 @@ export default class Uploader extends Component {
     upload() {
         const formData = new FormData();
         formData.append("file", this.state.newProfilePic);
-        fetch(`/upload/${this.userId}`, {
+        fetch("/upload/image.json", {
             method: "POST",
             body: formData,
         })
-            .then((res) => res.json)
+            .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    this.props.setUrl(data.profilePicUrl);
+                    this.props.setUrl(data.url);
+                    this.props.toggleUploader();
+                    this.setState({
+                        error: false,
+                    });
                 } else {
                     this.setState({
                         error: true,
@@ -62,16 +65,3 @@ export default class Uploader extends Component {
         );
     }
 }
-
-//image upload
-//onChange-event => single value in state = image => then: user can say cancel or send/submit => modal closes => eventually profilepic will appear
-
-// need multer + formData to handel this on server side
-// need a new route "/upload"
-// multer middleware => prepares the image in a format we need
-// s3 to
-// sends back single this: either URL from amazon or errormessage, if upload went wrong
-
-// THEN: App is where all the user data is; image also has also to be stored in app.
-
-//new column in users.sql for image-url

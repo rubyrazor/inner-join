@@ -1,25 +1,48 @@
 import { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ProfilePic from "./profilepic";
 import Uploader from "./uploader";
+import Profile from "./profile";
+import FindPeople from "./findpeople";
 
 export default class App extends Component {
     constructor() {
         super();
         this.state = {
-            first: "Ruben",
-            last: "Langer",
+            first: "",
+            last: "",
             email: "",
-            userId: "",
             profilePicUrl: "",
+            bio: "",
             uploaderIsVisible: false,
         };
         this.toggleUploader = this.toggleUploader.bind(this);
         this.setUrl = this.setUrl.bind(this);
+        this.updateBio = this.updateBio.bind(this);
     }
 
     componentDidMount() {
-        console.log("App component mounted");
-        //Make a fetch request to get data for currently logged in user (need not to send data, because the server gets it form the cookie); never return the entire data (best practice: list explicitly the fields you need, and don't retrieve data you dont need); e.g. dont need the pw
+        fetch("/profile")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.error) {
+                    this.setState({
+                        error: true,
+                    });
+                } else {
+                    this.setState(
+                        {
+                            first: data.first,
+                            last: data.last,
+                            profilePicUrl: data.profilePicUrl,
+                            bio: data.bio,
+                        },
+                        () => console.log(this.state)
+                    );
+                }
+            });
     }
 
     toggleUploader() {
@@ -35,27 +58,51 @@ export default class App extends Component {
         });
     }
 
+    updateBio(val) {
+        console.log("loggin in updateBio: ", val);
+        this.setState({
+            bio: val,
+        });
+    }
+
     render() {
         return (
             <>
-                <header>
-                    <img id="logoInApp" src="/logo.png" alt="logo" />
-                    <ProfilePic
-                        first={this.state.first}
-                        last={this.state.last}
-                        profilePicUrl={this.state.profilePicUrl}
-                        toggleUploader={this.toggleUploader}
-                    />
-                </header>
-                <section>
-                    {this.state.uploaderIsVisible && (
-                        <Uploader 
-                            userId={this.state.userId}
-                            setUrl={this.setUrl}
+                <BrowserRouter>
+                    <header>
+                        <img id="logoInApp" src="/logo.png" alt="logo" />
+                        <Link to="/">Profile</Link>
+                        <Link to="/users">Find Friends</Link>
+                        <ProfilePic
+                            first={this.state.first}
+                            last={this.state.last}
+                            profilePicUrl={this.state.profilePicUrl}
                             toggleUploader={this.toggleUploader}
+                            imageSize="smallProfilePic"
                         />
-                    )}
-                </section>
+                    </header>
+                    <Route exact path="/users">
+                        <FindPeople />
+                    </Route>
+                    <Route exact path="/">
+                        <Profile
+                            first={this.state.first}
+                            last={this.state.last}
+                            profilePicUrl={this.state.profilePicUrl}
+                            toggleUploader={this.toggleUploader}
+                            bio={this.state.bio}
+                            updateBio={this.updateBio}
+                        />
+                        <section>
+                            {this.state.uploaderIsVisible && (
+                                <Uploader
+                                    setUrl={this.setUrl}
+                                    toggleUploader={this.toggleUploader}
+                                />
+                            )}
+                        </section>
+                    </Route>
+                </BrowserRouter>
             </>
         );
     }

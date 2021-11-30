@@ -8,6 +8,7 @@ module.exports.authRouter = router;
 
 // --------------- REGISTER ROUTE ---------------
 router.post("/registration.json", (req, res) => {
+    console.log("Got here!");
     let first = req.body.first;
     let last = req.body.last;
     let password = req.body.pass;
@@ -15,18 +16,19 @@ router.post("/registration.json", (req, res) => {
 
     hash(password)
         .then((hashedPw) => {
-            db.addUser(first, last, email, hashedPw).then((result) => {
-                req.session.userId = result.rows[0].id;
-                res.success = true;
-                res.json(res);
+            return db.addUser(first, last, email, hashedPw);
+        })
+        .then((result) => {
+            req.session.userId = result.rows[0].id;
+            res.json({
+                success: true
             });
         })
         .catch((err) => {
             console.log("Exception in /register route", err);
-            res.json({ success: false });
+            res.json({ error: true });
         });
 });
-
 // --------------- LOGIN ROUTE ------------------
 
 router.post("/login.json", (req, res) => {
