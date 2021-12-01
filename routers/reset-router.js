@@ -44,8 +44,8 @@ router.post("/password/reset.json", (req, res) => {
 
 router.post("/password/verification.json", (req, res) => {
     const { email, newPass, verCode } = req.body;
+
     db.verifyVerCode(email).then((resp) => {
-        console.log("verifyVerCode: ", resp);
         if (resp.rows.length < 1) {
             res.json({ success: false });
         } else if (resp.rows[0].ver_code === verCode) {

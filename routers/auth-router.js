@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
-// const { requireNotLoggedIn } = require("../middleware/auth");
 const { hash, compare } = require("../bc");
 const db = require("../db/db");
 
 module.exports.authRouter = router;
 
-// --------------- REGISTER ROUTE ---------------
 router.post("/registration.json", (req, res) => {
-    console.log("Got here!");
     let first = req.body.first;
     let last = req.body.last;
     let password = req.body.pass;
@@ -29,7 +26,6 @@ router.post("/registration.json", (req, res) => {
             res.json({ error: true });
         });
 });
-// --------------- LOGIN ROUTE ------------------
 
 router.post("/login.json", (req, res) => {
     const email = req.body.email;

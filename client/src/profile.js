@@ -1,5 +1,5 @@
-import ProfilePic from "./profilepic";
-import BioEditor from "./bioeditor";
+import ProfilePic from "./profile-pic";
+import BioEditor from "./bio-editor";
 
 export default function Profile({ first, last, profilePicUrl, bio, toggleUploader, updateBio }) {
     return (

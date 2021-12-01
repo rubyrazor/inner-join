@@ -1,10 +1,12 @@
 import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import ProfilePic from "./profilepic";
+import ProfilePic from "./profile-pic";
 import Uploader from "./uploader";
 import Profile from "./profile";
-import FindPeople from "./findpeople";
+import FindPeople from "./find-people";
+import OtherProfile from "./other-profile";
+
 
 export default class App extends Component {
     constructor() {
@@ -83,6 +85,9 @@ export default class App extends Component {
                     </header>
                     <Route exact path="/users">
                         <FindPeople />
+                    </Route>
+                    <Route path="/user/:id">
+                        <OtherProfile />
                     </Route>
                     <Route exact path="/">
                         <Profile

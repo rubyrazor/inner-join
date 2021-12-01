@@ -43,7 +43,8 @@ module.exports.storeVerCode = (email, verCode) => {
 
 module.exports.verifyVerCode = (email) => {
     const q = `SELECT ver_code FROM verification
-                WHERE email = $1
+                WHERE (email = $1)
+                AND (CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes')
                 ORDER BY created_at DESC
                 LIMIT 1`;
     const params = [email];
@@ -59,7 +60,7 @@ module.exports.updatePassword = (email, newHashedPass) => {
 };
 
 module.exports.updateProfilePic = (userId, url) => {
-    const q = `Update users
+    const q = `UPDATE users
                 SET profile_pic_url = $1
                 WHERE id = $2
                 RETURNING profile_pic_url`;
@@ -77,7 +78,7 @@ module.exports.getUserData = (userId) => {
 };
 
 module.exports.addBio = (userId, bio) => {
-    const q = `Update users
+    const q = `UPDATE users
                 SET bio = $1
                 WHERE id = $2
                 RETURNING bio`;
@@ -86,7 +87,7 @@ module.exports.addBio = (userId, bio) => {
 };
 
 module.exports.getThreeMostRecentUsers = (userId) => {
-    const q = `Select id, first, last, profile_pic_url, bio
+    const q = `SELECT id, first, last, profile_pic_url, bio
                 FROM users
                 WHERE id != $1
                 ORDER BY id DESC
@@ -109,4 +110,32 @@ module.exports.getUsersMatchingSearchTerm = (userId, searchTerm) => {
         const params = [userId, searchTerm + "%"];
         return db.query(q, params);
     }
+};
+
+module.exports.getRelation = (otherId, userId) => {
+    const q = `SELECT * FROM friendships
+                WHERE (sender_id = $1 AND recipient_id = $2)
+                OR (recipient_id = $1 AND sender_id = $2)`;
+    const params = [otherId, userId];
+    return db.query(q, params);
+};
+
+module.exports.updateRelation = (message, otherId, userId) => {
+    let q;
+
+    if (message === "Make") {
+        q = `INSERT INTO friendships (sender_id, recipient_id, accepted)
+                VALUES ($1, $2, false)`;
+    } else if (message === "Accept") {
+        q = `UPDATE friendships
+                SET accepted = true
+                WHERE (sender_id = $1 AND recipient_id = $2)
+                OR (recipient_id = $1 AND sender_id = $2)`;
+    } else {
+        q = `DELETE FROM friendships
+                WHERE (sender_id = $1 AND recipient_id = $2)
+                OR (recipient_id = $1 AND sender_id = $2)`;
+    }
+    const params = [userId, otherId];
+    return db.query(q, params);
 };

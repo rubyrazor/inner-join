@@ -5,7 +5,8 @@ const path = require("path");
 const { authRouter } = require("../routers/auth-router.js");
 const { resetRouter } = require("../routers/reset-router.js");
 const { profileRouter } = require("../routers/profile-router.js");
-const { findRouter } = require("../routers/findpeople-router.js");
+const { findRouter } = require("../routers/find-router.js");
+const { friendshipRouter } = require("../routers/friendship-router.js");
 
 // ---------
 // Cookie-Session
@@ -51,12 +52,13 @@ app.use(authRouter);
 app.use(resetRouter);
 app.use(profileRouter);
 app.use(findRouter);
+app.use(friendshipRouter);
 
 // ----------
-// GET ROUTES
+// MAIN ROUTE
 // ----------
 
-app.get("/user/id.json", function (req, res) {
+app.get("/id.json", function (req, res) {
     res.json({
         userId: req.session.userId,
     });

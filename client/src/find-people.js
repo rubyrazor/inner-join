@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function FindPeople() {
     const [users, setUsers] = useState();
@@ -6,7 +7,6 @@ export default function FindPeople() {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        console.log("Got here1!");
         let abort;
         if (!searchTerm) {
             fetch("/users/recent.json")
@@ -16,7 +16,7 @@ export default function FindPeople() {
                 })
                 .catch((err) => {
                     console.log(
-                        "Exception thrown in fetching data in useEffect, findpeople.js: ",
+                        "Exception thrown in fetching data in useEffect, findpeople.js without searchTerm: ",
                         err
                     );
                     setError(true);
@@ -25,10 +25,19 @@ export default function FindPeople() {
             fetch(`/users/${searchTerm}`)
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log("Logging in fetch: ", data);
+                    console.log("Logging in fetch, data: ", data);
                     if (!abort) {
                         setUsers(data);
+                    } else if (error === true) {
+                        setError(true);
                     }
+                })
+                .catch((err) => {
+                    console.log(
+                        "Exception thrown when fetching data in useEffect, findpeople.js with searchTerm: ",
+                        err
+                    );
+                    setError(true);
                 });
         }
         return () => {
@@ -46,9 +55,12 @@ export default function FindPeople() {
                 users.map((user) => {
                     return (
                         <div key={user.id}>
-                            <img src={`${user.profile_pic_url}`} />
-                            <h3>{user.first} {user.last}</h3>
-                            <p>{user.bio}</p>
+                            <Link to={`/user/${user.id}`}>
+                                <img src={`${user.profile_pic_url}`} />
+                            </Link>
+                            <h3>
+                                {user.first} {user.last}
+                            </h3>
                         </div>
                     );
                 })}
