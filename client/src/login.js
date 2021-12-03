@@ -1,73 +1,32 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import useForm from "./hooks/use-form";
+import useSubmit from "./hooks/use-submit";
 
-export default class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    handleChange(e) {
-        console.log(e.target.value);
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    }
-    submit() {
-        console.log(
-            "Loggin in submit, login: ",
-            this.state.email,
-            this.state.pass
-        );
-        fetch("/login.json", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                email: this.state.email,
-                pass: this.state.pass,
-            }),
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data);
-                if (data.success == true) {
-                    console.log("Successfull login");
-                    location.replace("/");
-                } else {
-                    this.setState({
-                        error: true,
-                    });
-                }
-            });
-    }
-    render() {
-        return (
+export default function Login() {
+    const [userInput, handleChange] = useForm({});
+    const [error, submit] = useSubmit("/login.json", userInput);
+
+    return (
+        <div>
             <div>
-                <div>
-                    <Link to="/">Click here to register</Link>
-                </div>
-                <div>
-                    <Link to="/password/reset">Reset password</Link>
-                </div>
-                <div>
-                    {this.state.error && (
-                        <div className="error">Oops, something went wrong!</div>
-                    )}
-                </div>
-                <input
-                    name="email"
-                    onChange={(e) => this.handleChange(e)}
-                    placeholder="Email"
-                />
-                <input
-                    type="password"
-                    name="pass"
-                    onChange={(e) => this.handleChange(e)}
-                    placeholder="Password"
-                />
-                <button onClick={() => this.submit()}>Submit</button>
+                <Link to="/">Register</Link>
             </div>
-        );
-    }
+            <div>
+                <Link to="/password/reset">Reset Password</Link>
+            </div>
+            <div>
+                {error && (
+                    <div className="error">Oops, something went wrong!</div>
+                )}
+            </div>
+            <input name="email" onChange={handleChange} placeholder="Email" />
+            <input
+                type="password"
+                name="pass"
+                onChange={handleChange}
+                placeholder="Password"
+            />
+            <button onClick={submit}>Submit</button>
+        </div>
+    );
 }

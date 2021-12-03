@@ -12,6 +12,7 @@ export default function FindPeople() {
             fetch("/users/recent.json")
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log(data);
                     setUsers(data);
                 })
                 .catch((err) => {

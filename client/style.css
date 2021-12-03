@@ -1,5 +1,13 @@
-body {
-    background-color: hotpink;
+#background {
+    position: fixed;
+   justify-content: center;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+    overflow: hidden;
 }
 
 header {
@@ -7,7 +15,7 @@ header {
     justify-content: space-between;
 }
 
-img {
+#logo {
     height: 50%;
     width: 50%;
 }

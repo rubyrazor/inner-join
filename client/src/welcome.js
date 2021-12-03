@@ -7,7 +7,8 @@ export function Welcome() {
     return (
         <div>
             <h1>Welcome to LOGO</h1>
-            <img src="/logo.png" alt="logo" />
+            <img id="background"src="/background2.png" alt="background image" />
+            <img id="logo" src="/logo.png" alt="logo" />
             <BrowserRouter>
                 <div>
                     <Route exact path="/">

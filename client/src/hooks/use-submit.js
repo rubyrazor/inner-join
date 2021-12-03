@@ -17,5 +17,5 @@ export default function useSubmit(url, value) {
                 data.success ? location.replace("/") : setError(true)
             );
     };
-    return [submit, error];
+    return [error, submit];
 }

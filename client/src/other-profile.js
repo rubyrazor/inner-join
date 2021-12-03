@@ -41,7 +41,7 @@ export default function OtherProfile() {
                         {otherProfile.last}
                     </div>
                     <img
-                        src={otherProfile.profilePicUrl}
+                        src={otherProfile.profilePicUrl ?? "/default.png"} 
                         alt={`${otherProfile.first}, ${otherProfile.last}`}
                     />
                     <p>{otherProfile.bio}</p>

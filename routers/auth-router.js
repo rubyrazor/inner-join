@@ -5,6 +5,11 @@ const db = require("../db/db");
 
 module.exports.authRouter = router;
 
+router.get("/logout", (req, res) => {
+    req.session.userId = null;
+    res.redirect("/");
+});
+
 router.post("/registration.json", (req, res) => {
     let first = req.body.first;
     let last = req.body.last;

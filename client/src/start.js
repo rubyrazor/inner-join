@@ -2,6 +2,10 @@ import ReactDOM from "react-dom";
 import { Welcome } from "./welcome";
 import App from "./app";
 
+// const store = createStore(
+//     ####
+// )
+
 fetch("/id.json")
     .then((response) => response.json())
     .then((data) => {

@@ -3,12 +3,7 @@ import useForm from "./hooks/use-form";
 import useSubmit from "./hooks/use-submit";
 
 export default function Registration() {
-    const [userInput, handleChange] = useForm({
-        first: "Name",
-        last: "Last Name",
-        email: "Emailadress",
-        pass: "Password",
-    });
+    const [userInput, handleChange] = useForm({});
     const [submit, error] = useSubmit("/registration.json", userInput);
 
     return (
@@ -19,14 +14,27 @@ export default function Registration() {
                     <div className="error">Oops, something went wrong!</div>
                 )}
             </div>
-            <input name="first" onChange={handleChange} placeholder="First Name" />
+            <input
+                name="first"
+                onChange={handleChange}
+                placeholder="First Name"
+            />
             <input
                 name="last"
                 onChange={handleChange}
                 placeholder="Last Name"
             />
-            <input name="email" onChange={handleChange} placeholder="Emailaddress" />
-            <input type="password" name="pass" placeholder="Password" onChange={handleChange} />
+            <input
+                name="email"
+                onChange={handleChange}
+                placeholder="Emailaddress"
+            />
+            <input
+                type="password"
+                name="pass"
+                placeholder="Password"
+                onChange={handleChange}
+            />
             <button onClick={submit}>Submit</button>
         </>
     );

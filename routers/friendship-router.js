@@ -14,21 +14,26 @@ router.get("/api/relation/:id", (req, res) => {
             res.json({
                 status: 0,
             });
-        } else if (resp.rows[1].accepted === true) {
+        } else if (resp.rows[0].accepted === true) {
             res.json({
                 status: 3,
             });
-        } else if (resp.rows[1].accepted === false) {
-            if (resp.rows[1].sender_id == userId) {
+        } else if (resp.rows[0].accepted === false) {
+            if (resp.rows[0].sender_id == userId) {
                 res.json({
                     status: 1,
                 });
-            } else if (resp.rows[1].recipient_id == userId) {
+            } else if (resp.rows[0].recipient_id == userId) {
                 res.json({
                     status: 2,
                 });
             }
         }
+    }).catch((err) => {
+        console.log("Exception thrown in /api/realtion/:id, in friendship-router", err);
+        res.json({
+            success: false,
+        });
     });
 });
 

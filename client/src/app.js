@@ -7,7 +7,6 @@ import Profile from "./profile";
 import FindPeople from "./find-people";
 import OtherProfile from "./other-profile";
 
-
 export default class App extends Component {
     constructor() {
         super();
@@ -75,6 +74,7 @@ export default class App extends Component {
                         <img id="logoInApp" src="/logo.png" alt="logo" />
                         <Link to="/">Profile</Link>
                         <Link to="/users">Find Friends</Link>
+                        {/* <link href="/logout">Logout</link> */}
                         <ProfilePic
                             first={this.state.first}
                             last={this.state.last}
