@@ -2,10 +2,11 @@ import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ProfilePic from "./profile-pic";
-import Uploader from "./uploader";
+import Uploader from "../uploader";
 import Profile from "./profile";
-import FindPeople from "./find-people";
-import OtherProfile from "./other-profile";
+import FindPeople from "../find-people";
+import OtherProfile from "../other-profile";
+import Friends from "../friends";
 
 export default class App extends Component {
     constructor() {
@@ -27,7 +28,6 @@ export default class App extends Component {
         fetch("/profile")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.error) {
                     this.setState({
                         error: true,
@@ -47,7 +47,6 @@ export default class App extends Component {
     }
 
     toggleUploader() {
-        console.log("Toggle upload running");
         this.setState({
             uploaderIsVisible: !this.state.uploaderIsVisible,
         });
@@ -71,10 +70,19 @@ export default class App extends Component {
             <>
                 <BrowserRouter>
                     <header>
-                        <img id="logoInApp" src="/logo.png" alt="logo" />
-                        <Link to="/">Profile</Link>
-                        <Link to="/users">Find Friends</Link>
-                        {/* <link href="/logout">Logout</link> */}
+                        <div className="helper-div13">
+                            <img id="logoInApp" src="/logo2.png" alt="logo" />
+                            <div className="brand-small">Inner Join.</div>
+                        </div>
+                        <Link className="link2" to="/">
+                            Profile
+                        </Link>
+                        <Link className="link2" to="/users">
+                            Find Friends
+                        </Link>
+                        <Link className="link2" to="/friends">
+                            Friendships
+                        </Link>
                         <ProfilePic
                             first={this.state.first}
                             last={this.state.last}
@@ -88,6 +96,9 @@ export default class App extends Component {
                     </Route>
                     <Route path="/user/:id">
                         <OtherProfile />
+                    </Route>
+                    <Route path="/friends">
+                        <Friends />
                     </Route>
                     <Route exact path="/">
                         <Profile
@@ -107,6 +118,11 @@ export default class App extends Component {
                             )}
                         </section>
                     </Route>
+                    <footer>
+                        <a className="link2" href="/logout">
+                            Logout
+                        </a>
+                    </footer>
                 </BrowserRouter>
             </>
         );

@@ -32,7 +32,7 @@ export default class ResetPassword extends Component {
                     });
                 } else {
                     this.setState({
-                        // error: true RENDER STAGE 2 INDEPENDENT OF THE OUTCOME, TO GIVE NO HINTS AS TO THE OUTCOME?
+                        error: true,
                     });
                 }
             });
@@ -65,26 +65,34 @@ export default class ResetPassword extends Component {
     resetPassword() {
         if (this.state.stage === 1) {
             return (
-                <div>
-                    <h3>Reset your password</h3>
-                    <input
-                        name="email"
-                        onChange={(e) => this.handleChange(e)}
-                        placeholder="Email"
-                    />
-                    <button onClick={() => this.submitStage1()}>Submit</button>
-                    <div>
-                        <Link to="/">Click here to register</Link>
+                <>
+                    <div className="helper-div9">
+                        <input
+                            className="submit-field"
+                            name="email"
+                            onChange={(e) => this.handleChange(e)}
+                            placeholder="Email"
+                        />
+                        <div className="helper-div10">
+                            <button
+                                className="submit-btn"
+                                onClick={() => this.submitStage1()}
+                            >
+                                Submit
+                            </button>
+                            <Link className="link" to="/">
+                                Register
+                            </Link>
+                        </div>
                     </div>
-
-                    {/* <div>
+                    <div className="error-message">
                         {this.state.error && (
                             <div className="error">
                                 Oops, something went wrong!
                             </div>
                         )}
-                    </div> */}
-                </div>
+                    </div>
+                </>
             );
         } else if (this.state.stage === 2) {
             return (

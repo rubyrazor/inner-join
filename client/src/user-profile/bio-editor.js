@@ -45,29 +45,48 @@ export default class BioEditor extends Component {
 
     render() {
         return (
-            <div>
-                {!this.state.editorIsVisible && <div id="helper-div6">{this.props.bio}</div>}
+            <div className="helper-div14">
+                {!this.state.editorIsVisible && (
+                    <div id="helper-div6">{this.props.bio}</div>
+                )}
                 {!this.state.editorIsVisible && !this.props.bio && (
-                    <button onClick={() => this.toggleTextarea()}>
+                    <button
+                        className="submit-btn"
+                        onClick={() => this.toggleTextarea()}
+                    >
                         Add Bio
                     </button>
                 )}
                 {!this.state.editorIsVisible && this.props.bio && (
-                    <button onClick={() => this.toggleTextarea()}>
+                    <button
+                        className="submit-btn"
+                        onClick={() => this.toggleTextarea()}
+                    >
                         Edit Bio
                     </button>
                 )}
                 {this.state.editorIsVisible && (
-                    <>
+                    <div className="helper-div14">
                         <textarea
+                            className="bio-editor"
                             onChange={this.handleChange}
                             defaultValue={`${this.props.bio}`}
                         />
-                        <div>
-                            <button onClick={() => this.saveBio()}>Save</button>
-                            <button onClick={() => this.toggleTextarea()}>Exit</button>
+                        <div className="helper-div15">
+                            <button
+                                className="submit-btn"
+                                onClick={() => this.saveBio()}
+                            >
+                                Save
+                            </button>
+                            <button
+                                className="submit-btn exit-btn"
+                                onClick={() => this.toggleTextarea()}
+                            >
+                                Exit
+                            </button>
                         </div>
-                    </>
+                    </div>
                 )}
             </div>
         );

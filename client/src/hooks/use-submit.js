@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useSubmit(url, value) {
+export default function useSubmit(url, val) {
     const [error, setError] = useState(false);
 
     const submit = () => {
@@ -10,12 +10,13 @@ export default function useSubmit(url, value) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(value),
+            body: JSON.stringify(val),
         })
             .then((res) => res.json())
-            .then((data) =>
-                data.success ? location.replace("/") : setError(true)
-            );
+            .then((data) => {
+                console.log("Logging in useSubmit: ", data);
+                data.success ? location.replace("/") : setError(true);
+            });
     };
     return [error, submit];
 }

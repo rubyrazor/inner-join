@@ -5,6 +5,12 @@ const db = require("../db/db");
 
 module.exports.authRouter = router;
 
+router.get("/id.json", function (req, res) {
+    res.json({
+        userId: req.session.userId,
+    });
+});
+
 router.get("/logout", (req, res) => {
     req.session.userId = null;
     res.redirect("/");
@@ -40,9 +46,10 @@ router.post("/login.json", (req, res) => {
     db.getStoredPassword(email)
         .then((resp) => {
             console.log(resp);
-            if (resp.rows[0] == []) {
-                resp.success = false;
-                return res.json(resp);
+            if (resp.rows.length < 1) {
+                res.json({
+                    error: true,
+                });
             } else {
                 let storedPassword = resp.rows[0].hashed_pw;
                 return compare(pass, storedPassword);
@@ -50,6 +57,7 @@ router.post("/login.json", (req, res) => {
         })
         .then((resp) => {
             if (resp) {
+                console.log(resp);
                 db.getUserIdByEmail(email)
                     .then((resp) => {
                         userId = resp.rows[0].id;
@@ -59,11 +67,11 @@ router.post("/login.json", (req, res) => {
                     })
                     .catch((err) => {
                         console.log("Exception in /login route: ", err);
-                        res.sendStatus(500);
                     });
             } else {
-                resp.success = false;
-                res.json(resp);
+                res.json({
+                    error: true,
+                });
             }
         });
 });

@@ -17,7 +17,7 @@ export default function FindPeople() {
                 })
                 .catch((err) => {
                     console.log(
-                        "Exception thrown in fetching data in useEffect, findpeople.js without searchTerm: ",
+                        "Exception thrown in fetching data in useEffect, find-people.js without searchTerm: ",
                         err
                     );
                     setError(true);
@@ -26,7 +26,6 @@ export default function FindPeople() {
             fetch(`/users/${searchTerm}`)
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log("Logging in fetch, data: ", data);
                     if (!abort) {
                         setUsers(data);
                     } else if (error === true) {
@@ -57,7 +56,12 @@ export default function FindPeople() {
                     return (
                         <div key={user.id}>
                             <Link to={`/user/${user.id}`}>
-                                <img src={`${user.profile_pic_url}`} />
+                                <img
+                                    src={
+                                        user.profile_pic_url ||
+                                        "/default.png"
+                                    }
+                                />
                             </Link>
                             <h3>
                                 {user.first} {user.last}

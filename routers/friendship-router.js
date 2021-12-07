@@ -8,39 +8,45 @@ router.get("/api/relation/:id", (req, res) => {
     const { id } = req.params;
     const { userId } = req.session;
 
-    db.getRelation(id, userId).then((resp) => {
-        console.log(resp);
-        if (resp.rows.length < 1) {
-            res.json({
-                status: 0,
-            });
-        } else if (resp.rows[0].accepted === true) {
-            res.json({
-                status: 3,
-            });
-        } else if (resp.rows[0].accepted === false) {
-            if (resp.rows[0].sender_id == userId) {
+    db.getRelation(id, userId)
+        .then((resp) => {
+            console.log(resp);
+            if (resp.rows.length < 1) {
                 res.json({
-                    status: 1,
+                    status: 0,
                 });
-            } else if (resp.rows[0].recipient_id == userId) {
+            } else if (resp.rows[0].accepted === true) {
                 res.json({
-                    status: 2,
+                    status: 3,
                 });
+            } else if (resp.rows[0].accepted === false) {
+                if (resp.rows[0].sender_id == userId) {
+                    res.json({
+                        status: 1,
+                    });
+                } else if (resp.rows[0].recipient_id == userId) {
+                    res.json({
+                        status: 2,
+                    });
+                }
             }
-        }
-    }).catch((err) => {
-        console.log("Exception thrown in /api/realtion/:id, in friendship-router", err);
-        res.json({
-            success: false,
+        })
+        .catch((err) => {
+            console.log(
+                "Exception thrown in /api/realtion/:id, in friendship-router",
+                err
+            );
+            res.json({
+                success: false,
+            });
         });
-    });
 });
 
 router.post("/api/relation/update/:id", (req, res) => {
     const { id: otherId } = req.params;
     const { userId } = req.session;
     const { message } = req.body;
+    console.log("I got called!");
     console.log(otherId);
     console.log(userId);
     console.log(message);
@@ -56,8 +62,23 @@ router.post("/api/relation/update/:id", (req, res) => {
                 "Exception thrown in /api/relation/update/:id, db.updateRelation",
                 err
             ),
-                res.json({
-                    success: false,
-                });
+            res.json({
+                success: false,
+            });
+        });
+});
+
+router.get("/api/friends", (req, res) => {
+    const { userId } = req.session;
+    db.getFriendsAndWannabes(userId)
+        .then((resp) => {
+            console.log("Logging response in getFriendsAndWannabes: ", resp);
+            res.json(resp.rows);
+        })
+        .catch((err) => {
+            console.log("Exception thrown in /api/friends, friendship-router.js. ", err);
+            res.json({
+                error: true
+            });
         });
 });

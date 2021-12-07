@@ -3,18 +3,17 @@ import BioEditor from "./bio-editor";
 
 export default function Profile({ first, last, profilePicUrl, bio, toggleUploader, updateBio }) {
     return (
-        <div>
-            <h1>USER PROFILE PAGE</h1>
+        <div >
             <div id="helper-div2">
                 <div id="helper-div3">
-                    <div id="helper-div4">
-                        {first} {last}
-                    </div>
                     <ProfilePic
                         imageSize="bigProfilePic"
                         profilePicUrl={profilePicUrl}
                         toggleUploader={toggleUploader}
                     />
+                    <div id="helper-div4">
+                        {first} {last}
+                    </div>
                 </div>
                 <div id="helper-div5">
                     <BioEditor bio={bio} updateBio={updateBio} />

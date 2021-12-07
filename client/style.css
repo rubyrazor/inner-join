@@ -1,6 +1,6 @@
 #background {
     position: fixed;
-   justify-content: center;
+    justify-content: center;
     height: 100vh;
     top: 0;
     right: 0;
@@ -16,32 +16,195 @@ header {
 }
 
 #logo {
-    height: 50%;
-    width: 50%;
+    grid-column: 4/8;
+    grid-row: 2/4;
+    width: 250px;
 }
 
 .smallProfilePic {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    border: 3px solid red;
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 70px;
+    width: 70px;
+    border-radius: 20px;
+    border: 1x solid lightslategrey;
 }
 
 .bigProfilePic {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    border: 3px solid red;
+    border: 1x solid lightslategrey;
 }
 
 #logoInApp {
-    height: 100px;
-    width: 100px;
+    width: 150px;
+}
+
+/* ---------------------- */
+/* WELCOME */
+/* ---------------------- */
+
+#helper-div8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: grid;
+    grid-template-columns: repeat(10, 10vw);
+    grid-template-rows:repeat(10, 10vh); */
+}
+
+#brand-name {
+    grid-column: 4/8;
+    grid-row: 1/2;
+    font-family: "Comfortaa";
+    font-size: 50px;
+}
+
+#jingle {
+    grid-column: 4/8;
+    grid-row: 5/6;
+    font-family: "Comfortaa";
+}
+
+/* ---------------------- */
+/* START */
+/* ---------------------- */
+
+#helper-div12 {
+    margin-top: 60px;
+    height: 172px;
+}
+
+/* ---------------------- */
+/* REGISTRATION */
+/* ---------------------- */
+
+.submit-fields {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Comfortaa";
+    font-weight: 900;
+    /* text-align: center; */
+    border: none;
+    border-bottom: 0.5px dotted lightslategrey;
+    outline: none;
+    width: 300px;
+}
+
+.submit-btn {
+    margin-left: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    border: none;
+    background-color: #b4c5d5;
+    color: white;
+    font-family: "Comfortaa";
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    line-height: 50px;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: rgb(172 124 242);
+}
+
+.link {
+    width: 74px;
+    height: 40px;
+    color: white;
+    background-color: #b4c5d5;
+    /* background-color: rgb(117, 171, 224); */
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    line-height: 43px;
+    text-decoration: none;
+    font-family: "Comfortaa";
+    font-size: 14px;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.link:hover {
+    background-color: #bf9fed;
+}
+
+.error-message {
+    color: crimson;
+    text-align: center;
+    margin-top: 30px;
+    font-family: "Comfortaa";
+}
+
+.helper-div9 {
+    display: flex;
+    height: 170px;
+    align-items: center;
+}
+
+.helper-div10 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------------- */
+/* APP --> HEADER */
+/* ---------------------- */
+
+.brand-small {
+    font-family: "Comfortaa";
+}
+
+.helper-div13 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link2 {
+    width: 150px;
+    color: white;
+    background-color: #b4c5d5;
+    /* background-color: rgb(196 169 235); */
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    line-height: 43px;
+    text-decoration: none;
+    font-family: "Comfortaa";
+    font-size: 14px;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.link2:hover {
+    background-color: rgb(172 124 242);
 }
 
 /* ---------------------- */
 /* UPLOADER */
 /* ---------------------- */
+
 #modal {
     position: fixed;
     display: grid;
@@ -63,8 +226,12 @@ header {
 }
 
 #helper-div2 {
+    margin-top: 50px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: rgb(255 229 229);
+    padding: 40px;
 }
 
 #helper-div3 {
@@ -75,8 +242,8 @@ header {
 }
 
 #helper-div4 {
-    margin-bottom: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 20px;
+    font-family: "Comfortaa";
     font-size: 20px;
 }
 
@@ -84,19 +251,45 @@ header {
     margin-left: 50px;
 }
 
+/* ---------------------- */
+/* Profile Page */
+/* ---------------------- */
+
 #helper-div6 {
-    height: 100px;
+    height: 150px;
     width: 150px;
-    background-color: grey;
-    border: 1px solid black;
+    padding: 10px;
+    background-color: lightslategrey;
+    border: 0.5px solid black;
+    font-family: "Comfortaa";
+    font-size: 15px;
 }
 
-/* #helper-div7 {
-    display: flex;
-} */
-/* HERE!!!! */
-
 textarea {
-    height: 100px;
-    width: 150px; 
+    padding: 10px;
+    font-family: "Comfortaa";
+    font-size: 15px;
+    height: 150px;
+    width: 150px;
+}
+
+.helper-div14 {
+    display: flex;
+}
+
+.helper-div15 {
+    display: flex;
+    flex-direction: column;
+}
+
+.exit-btn {
+    margin-top: 20px;
+}
+
+/* ---------------------- */
+/* FOOTER */
+/* ---------------------- */
+
+footer {
+    height: 150px;
 }
