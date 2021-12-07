@@ -287,6 +287,36 @@ textarea {
 }
 
 /* ---------------------- */
+/* CHAT */
+/* ---------------------- */
+
+#chat {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.chat-img {
+    margin: 10px;
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1x solid lightslategrey;
+}
+
+.chat-name {
+    margin: 10px;
+    font-family: "Comfortaa";
+}
+
+.helper-div16 {
+    width: 60vw;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* ---------------------- */
 /* FOOTER */
 /* ---------------------- */
 

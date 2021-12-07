@@ -152,3 +152,22 @@ module.exports.getFriendsAndWannabes = (userId) => {
     const params = [userId];
     return db.query(q, params);
 };
+
+module.exports.getLastTenChatMessages = () => {
+    const q = `SELECT first, last, profile_pic_url, users.id AS userId, message, messages.id AS message_id
+                FROM messages
+                JOIN users
+                ON users.id = messages.user_id
+                ORDER BY messages.id DESC
+                LIMIT 10`;
+
+    return db.query(q);
+};
+
+module.exports.addMessage = (message, userId) => {
+    const q = `INSERT INTO messages (user_id, message)
+                VALUES ($1, $2)
+                RETURNING id`;
+    const params = [userId, message];
+    return db.query(q, params);
+};

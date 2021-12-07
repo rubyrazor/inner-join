@@ -13,10 +13,7 @@ import { Provider } from "react-redux";
 import reducer from "./redux/reducer";
 import * as immutableState from "redux-immutable-state-invariant";
 import { composeWithDevTools } from "redux-devtools-extension";
-
-//SOCKET-IO
-import { io } from "socket.io-client";
-const socket = io();
+import { init } from "./socket";
 
 const store = createStore(
     reducer,
@@ -35,13 +32,7 @@ fetch("/id.json")
         if (!data.userId) {
             ReactDOM.render(<Welcome />, document.querySelector("main"));
         } else {
+            init(store);
             ReactDOM.render(elem, document.querySelector("main"));
         }
     });
-
-socket.on("welcome", function (data) {
-    console.log(data);
-    socket.emit("thanks", {
-        message: "Thank you. It is great to be here.",
-    });
-});

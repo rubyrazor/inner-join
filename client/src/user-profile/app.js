@@ -7,6 +7,7 @@ import Profile from "./profile";
 import FindPeople from "../find-people";
 import OtherProfile from "../other-profile";
 import Friends from "../friends";
+import Chat from "../chat";
 
 export default class App extends Component {
     constructor() {
@@ -83,6 +84,12 @@ export default class App extends Component {
                         <Link className="link2" to="/friends">
                             Friendships
                         </Link>
+                        <Link className="link2" to="/chat">
+                            Chat
+                        </Link>
+                        <a className="link2" href="/logout">
+                            Logout
+                        </a>
                         <ProfilePic
                             first={this.state.first}
                             last={this.state.last}
@@ -99,6 +106,9 @@ export default class App extends Component {
                     </Route>
                     <Route path="/friends">
                         <Friends />
+                    </Route>
+                    <Route path="/chat">
+                        <Chat />
                     </Route>
                     <Route exact path="/">
                         <Profile
@@ -118,11 +128,6 @@ export default class App extends Component {
                             )}
                         </section>
                     </Route>
-                    <footer>
-                        <a className="link2" href="/logout">
-                            Logout
-                        </a>
-                    </footer>
                 </BrowserRouter>
             </>
         );

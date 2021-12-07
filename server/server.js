@@ -2,6 +2,9 @@
 const express = require("express");
 const app = express();
 //
+//DB
+const db = require("../db/db");
+
 //
 const compression = require("compression");
 const path = require("path");
@@ -18,7 +21,7 @@ const cookieSession = require("cookie-session");
 const COOKIE_SECRET =
     process.env.COOKIE_SECRET || require("../secrets.json").COOKIE_SECRET;
 //
-// Socket-Io
+// Socket-IO
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
     allowRequest: (req, callback) =>
@@ -36,14 +39,17 @@ app.use(express.static(path.join(__dirname, "..", "client", "public")));
 // Parses JSON-format request bodies.
 app.use(express.json());
 
+//
+
 // Initial configuration of cookie session.
-const cookieSessionMiddleware = app.use(
+const cookieSessionMiddleware = 
     cookieSession({
         secret: COOKIE_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         sameSite: true,
-    })
-);
+    });
+
+app.use(cookieSessionMiddleware);
 
 // Cookie-session will not automatically run on the session cookie that is present on the request property of the socket objects => need to explicitly run it on it => can expect socket.request.session to be present when a user connects.
 io.use(function (socket, next) {
@@ -86,27 +92,57 @@ io.on("connection", function (socket) {
     if (!socket.request.session.userId) {
         return socket.disconnect(true);
     }
+    console.log("Hello");
+    db.getLastTenChatMessages()
+        .then(({ rows }) => {
+            console.log("Ten last chat messages: ", rows);
+            socket.emit("chatMessages", rows);
+        })
+        .catch((err) => {
+            console.log(
+                "Exception thrown in: server.js -> io.on -> db.getLastTenMessages: ",
+                err
+            );
+            socket.emit("error", {
+                error: true,
+            });
+        });
 
-    socket.emit("chatMessages", {
-        message: "Welome. It is nice to see you",
+    socket.on("newChatMessage", (message) => {
+    
+        const userId = socket.request.session.userId;
+        let message_id;
+
+        db.addMessage(message, userId)
+            .then(({ rows }) => {
+                message_id = rows[0].id;
+                return db.getUserData(userId);
+            })
+            .then((resp) => {
+                io.emit("chatMessage", {
+                    first: resp.rows[0].first,
+                    last: resp.rows[0].last,
+                    profile_pic_url: resp.rows[0].profile_pic_url,
+                    userId: userId,
+                    message: message,
+                    message_id: message_id,
+                });
+            })
+            .catch((err) => {
+                console.log(
+                    "Exception thrown in: server.js -> io.on -> db.addMessage: ",
+                    err
+                );
+                socket.emit("error", {
+                    error: true,
+                });
+            });
     });
-
-    console.log(`socket with the id ${socket.id} is now connected`);
-
-    socket.on("disconnect", function () {
-        console.log(`socket with the id ${socket.id} is now disconnected`);
-    });
-
-    socket.on("thanks", function (data) {
-        console.log(data);
-    });
-
 });
 
 // ----------
 // * ROUTE
 // ----------
-
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });

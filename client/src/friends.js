@@ -22,7 +22,6 @@ export default function Friends() {
             fetch("/api/friends")
                 .then((res) => res.json())
                 .then((resp) => {
-                    console.log("Logging friendsAndWannabes: ", resp);
                     dispatch(receiveFriendsAndWannabes(resp));
                 });
         }
