@@ -19,7 +19,7 @@ export function chatMessagesReceived(chatMessages) {
 }
 
 export function chatMessageReceived(chatMessage) {
-    console.log("got here");
+    console.log("Logging chatMessage: ", chatMessage);
     return {
         type: "messages/chatMessage",
         payload: { chatMessage },

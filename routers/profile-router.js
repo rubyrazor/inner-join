@@ -39,7 +39,8 @@ router.get("/profile", (req, res) => {
                 first: resp.rows[0].first,
                 last: resp.rows[0].last,
                 profilePicUrl: resp.rows[0].profile_pic_url,
-                bio: resp.rows[0].bio
+                bio: resp.rows[0].bio,
+                loggedInUserId: userId
             });
         })
         .catch((err) => {

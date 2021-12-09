@@ -32,25 +32,35 @@ export default function OtherProfile() {
     }, [id]);
 
     return (
-        <div>
+        <>
+            <div className="helper-div2">
+                {otherProfile && (
+                    <>
+                        <div className="helper-div3">
+                            <img
+                                className="bigProfilePic"
+                                src={
+                                    otherProfile.profilePicUrl ?? "/default.png"
+                                }
+                                alt={`${otherProfile.first}, ${otherProfile.last}`}
+                            />
+                            <div className="helper-div4">
+                                {otherProfile.first} {otherProfile.last}
+                            </div>
+                        </div>
+                        <div className="helper-div14">
+                            <div className="helper-div6">
+                                {otherProfile.bio}
+                            </div>
+                            <FriendBtn id={id} />
+                        </div>
+                    </>
+                )}
+                {error && (
+                    <div className="error">Oops, something went wrong!</div>
+                )}
+            </div>
             <div>{notFound && <h1>User has not been found</h1>}</div>
-            {otherProfile && (
-                <div>
-                    <div>
-                        {otherProfile.first}
-                        {otherProfile.last}
-                    </div>
-                    <img
-                        src={otherProfile.profilePicUrl ?? "/default.png"} 
-                        alt={`${otherProfile.first}, ${otherProfile.last}`}
-                    />
-                    <p>{otherProfile.bio}</p>
-                    <FriendBtn
-                        id={id}
-                    />
-                </div>
-            )}
-            {error && <div className="error">Oops, something went wrong!</div>}
-        </div>
+        </>
     );
 }

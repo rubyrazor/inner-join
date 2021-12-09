@@ -46,30 +46,35 @@ export default function FindPeople() {
     }, [searchTerm]);
 
     return (
-        <>
+        <div className="helper-div17">
             <input
+                className="search-fld"
+                placeholder="Search"
                 type="text"
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-            {users &&
-                users.map((user) => {
-                    return (
-                        <div key={user.id}>
-                            <Link to={`/user/${user.id}`}>
-                                <img
-                                    src={
-                                        user.profile_pic_url ||
-                                        "/default.png"
-                                    }
-                                />
-                            </Link>
-                            <h3>
-                                {user.first} {user.last}
-                            </h3>
-                        </div>
-                    );
-                })}
+            <div className="helper-div18">
+                {users &&
+                    users.map((user) => {
+                        return (
+                            <div className="helper-div19" key={user.id}>
+                                <Link to={`/user/${user.id}`}>
+                                    <img
+                                        className="other-profile-pic"
+                                        src={
+                                            user.profile_pic_url ||
+                                            "/default.png"
+                                        }
+                                    />
+                                </Link>
+                                <div className="helper-div4">
+                                    {user.first} {user.last}
+                                </div>
+                            </div>
+                        );
+                    })}
+            </div>
             {error && <div className="error">Oops, something went wrong!</div>}
-        </>
+        </div>
     );
 }

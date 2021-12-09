@@ -50,7 +50,6 @@ export default function FriendBtn({ id }) {
                 } else {
                     if (message === "Make") {
                         setBtnText("Cancel Friend Request");
-
                     } else if (message === "Cancel") {
                         setBtnText("Make Friend Request");
                     } else if (message === "Accept") {
@@ -71,8 +70,9 @@ export default function FriendBtn({ id }) {
 
     return (
         <>
-            <div>Friend Button Component</div>
-            <button onClick={handleChange}>{btnText}</button>
+            <button className="submit-btn" onClick={handleChange}>
+                {btnText}
+            </button>
             {error && <div className="error">Oops, something went wrong!</div>}
         </>
     );

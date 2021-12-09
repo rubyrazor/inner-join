@@ -1,23 +1,28 @@
 import ProfilePic from "./profile-pic";
 import BioEditor from "./bio-editor";
 
-export default function Profile({ first, last, profilePicUrl, bio, toggleUploader, updateBio }) {
+export default function Profile({
+    first,
+    last,
+    profilePicUrl,
+    bio,
+    toggleUploader,
+    updateBio,
+}) {
     return (
-        <div >
-            <div id="helper-div2">
-                <div id="helper-div3">
-                    <ProfilePic
-                        imageSize="bigProfilePic"
-                        profilePicUrl={profilePicUrl}
-                        toggleUploader={toggleUploader}
-                    />
-                    <div id="helper-div4">
-                        {first} {last}
-                    </div>
+        <div className="helper-div2">
+            <div className="helper-div3">
+                <ProfilePic
+                    imageSize="bigProfilePic"
+                    profilePicUrl={profilePicUrl}
+                    toggleUploader={toggleUploader}
+                />
+                <div className="helper-div4">
+                    {first} {last}
                 </div>
-                <div id="helper-div5">
-                    <BioEditor bio={bio} updateBio={updateBio} />
-                </div>
+            </div>
+            <div id="helper-div5">
+                <BioEditor bio={bio} updateBio={updateBio} />
             </div>
         </div>
     );

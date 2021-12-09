@@ -12,7 +12,7 @@ router.get("/id.json", function (req, res) {
 });
 
 router.get("/logout", (req, res) => {
-    req.session.userId = null;
+    req.session = null;
     res.redirect("/");
 });
 
@@ -42,7 +42,7 @@ router.post("/login.json", (req, res) => {
     const email = req.body.email;
     const pass = req.body.pass;
     let userId;
-
+    
     db.getStoredPassword(email)
         .then((resp) => {
             console.log(resp);
@@ -75,3 +75,4 @@ router.post("/login.json", (req, res) => {
             }
         });
 });
+

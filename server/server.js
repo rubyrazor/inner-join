@@ -42,12 +42,11 @@ app.use(express.json());
 //
 
 // Initial configuration of cookie session.
-const cookieSessionMiddleware = 
-    cookieSession({
-        secret: COOKIE_SECRET,
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-        sameSite: true,
-    });
+const cookieSessionMiddleware = cookieSession({
+    secret: COOKIE_SECRET,
+    maxAge: 1000 * 60 * 60 * 24 * 14,
+    sameSite: true,
+});
 
 app.use(cookieSessionMiddleware);
 
@@ -88,14 +87,14 @@ app.get("/id.json", function (req, res) {
 // ----------
 // SOCKET-IO
 // ----------
+
 io.on("connection", function (socket) {
     if (!socket.request.session.userId) {
         return socket.disconnect(true);
     }
-    console.log("Hello");
     db.getLastTenChatMessages()
         .then(({ rows }) => {
-            console.log("Ten last chat messages: ", rows);
+            console.log("TenLastMessages: ", rows);
             socket.emit("chatMessages", rows);
         })
         .catch((err) => {
@@ -109,13 +108,14 @@ io.on("connection", function (socket) {
         });
 
     socket.on("newChatMessage", (message) => {
-    
         const userId = socket.request.session.userId;
         let message_id;
+        let created_at;
 
         db.addMessage(message, userId)
             .then(({ rows }) => {
                 message_id = rows[0].id;
+                created_at = rows[0].created_at;
                 return db.getUserData(userId);
             })
             .then((resp) => {
@@ -123,9 +123,12 @@ io.on("connection", function (socket) {
                     first: resp.rows[0].first,
                     last: resp.rows[0].last,
                     profile_pic_url: resp.rows[0].profile_pic_url,
-                    userId: userId,
+                    user_id: userId,
+                    message_user_id: resp.rows[0].message_user_id,
                     message: message,
                     message_id: message_id,
+                    created_at: created_at,
+                    Hello: "Hello",
                 });
             })
             .catch((err) => {

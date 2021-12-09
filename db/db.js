@@ -148,13 +148,13 @@ module.exports.getFriendsAndWannabes = (userId) => {
       ON (accepted = false AND recipient_id = $1 AND sender_id = users.id)
       OR (accepted = true AND recipient_id = $1 AND sender_id = users.id)
       OR (accepted = true AND sender_id = $1 AND recipient_id = users.id)
-  `;
+      `;
     const params = [userId];
     return db.query(q, params);
 };
 
 module.exports.getLastTenChatMessages = () => {
-    const q = `SELECT first, last, profile_pic_url, users.id AS userId, message, messages.id AS message_id
+    const q = `SELECT first, last, profile_pic_url, messages.user_id AS message_user_id, message, messages.id AS message_id, messages.created_at
                 FROM messages
                 JOIN users
                 ON users.id = messages.user_id
@@ -167,7 +167,7 @@ module.exports.getLastTenChatMessages = () => {
 module.exports.addMessage = (message, userId) => {
     const q = `INSERT INTO messages (user_id, message)
                 VALUES ($1, $2)
-                RETURNING id`;
+                RETURNING *`;
     const params = [userId, message];
     return db.query(q, params);
 };

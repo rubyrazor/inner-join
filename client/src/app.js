@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import ProfilePic from "./profile-pic";
-import Uploader from "../uploader";
-import Profile from "./profile";
-import FindPeople from "../find-people";
-import OtherProfile from "../other-profile";
-import Friends from "../friends";
-import Chat from "../chat";
+import ProfilePic from "./user-profile/profile-pic";
+import Uploader from "./uploader";
+import Profile from "./user-profile/profile";
+import FindPeople from "./other-users/find-people";
+import OtherProfile from "./other-users/other-profile";
+import Friends from "./other-users/friends";
+import Chat from "./chat";
 
 export default class App extends Component {
     constructor() {
@@ -15,6 +15,7 @@ export default class App extends Component {
         this.state = {
             first: "",
             last: "",
+            loggedInUserId: "",
             email: "",
             profilePicUrl: "",
             bio: "",
@@ -40,8 +41,9 @@ export default class App extends Component {
                             last: data.last,
                             profilePicUrl: data.profilePicUrl,
                             bio: data.bio,
+                            loggedInUserId: data.loggedInUserId,
                         },
-                        () => console.log(this.state)
+                        () => console.log("Loggin state: ", this.state)
                     );
                 }
             });
@@ -108,7 +110,7 @@ export default class App extends Component {
                         <Friends />
                     </Route>
                     <Route path="/chat">
-                        <Chat />
+                        <Chat loggedInUserId={this.state.loggedInUserId} />
                     </Route>
                     <Route exact path="/">
                         <Profile

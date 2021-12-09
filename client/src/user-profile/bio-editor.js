@@ -47,7 +47,7 @@ export default class BioEditor extends Component {
         return (
             <div className="helper-div14">
                 {!this.state.editorIsVisible && (
-                    <div id="helper-div6">{this.props.bio}</div>
+                    <div className="helper-div6">{this.props.bio}</div>
                 )}
                 {!this.state.editorIsVisible && !this.props.bio && (
                     <button
@@ -75,7 +75,11 @@ export default class BioEditor extends Component {
                         <div className="helper-div15">
                             <button
                                 className="submit-btn"
-                                onClick={() => this.saveBio()}
+                                onClick={() => {
+                                    this.saveBio();
+                                    this.toggleTextarea();
+                                }}
+        
                             >
                                 Save
                             </button>

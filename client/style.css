@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 #background {
     position: fixed;
     justify-content: center;
@@ -114,7 +118,7 @@ header {
     font-size: 14px;
     font-weight: 900;
     cursor: pointer;
-    line-height: 50px;
+    /* line-height: 50px; */
     text-align: center;
 }
 
@@ -225,7 +229,8 @@ header {
     background: white;
 }
 
-#helper-div2 {
+.helper-div2 {
+    height: 420px;
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -234,17 +239,19 @@ header {
     padding: 40px;
 }
 
-#helper-div3 {
+.helper-div3 {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#helper-div4 {
+.helper-div4 {
+    text-align: center;
     margin-top: 20px;
     font-family: "Comfortaa";
     font-size: 20px;
+    color: rgb(76 76 76);
 }
 
 #helper-div5 {
@@ -255,26 +262,36 @@ header {
 /* Profile Page */
 /* ---------------------- */
 
-#helper-div6 {
-    height: 150px;
-    width: 150px;
-    padding: 10px;
-    background-color: lightslategrey;
-    border: 0.5px solid black;
+.helper-div6 {
+    height: 230px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px 30px;
+    background-color: rgb(221 224 227);
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
     font-family: "Comfortaa";
     font-size: 15px;
+    color: rgb(76 76 76);
+    overflow-x: scroll;
 }
 
 textarea {
-    padding: 10px;
-    font-family: "Comfortaa";
+    height: 230px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px 30px;
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
+    font-family: "Courier New", Courier, monospace;
     font-size: 15px;
-    height: 150px;
-    width: 150px;
+    height: 230px;
+    overflow-x: scroll;
 }
 
 .helper-div14 {
     display: flex;
+    align-items: center;
 }
 
 .helper-div15 {
@@ -296,30 +313,192 @@ textarea {
 }
 
 .chat-img {
-    margin: 10px;
-    height: 70px;
-    width: 70px;
+    margin: 10px 10px 0 10px;
+    height: 30px;
+    width: 30px;
     overflow: hidden;
     border-radius: 20px;
     border: 1x solid lightslategrey;
 }
 
 .chat-name {
-    margin: 10px;
+    margin: 5px 10px 5px 10px;
     font-family: "Comfortaa";
+    font-size: 11px;
 }
 
 .helper-div16 {
-    width: 60vw;
+    margin: 5px;
+    width: 40vw;
     display: flex;
-    border: 1px solid black;
+}
+
+.right {
+    flex-direction: row-reverse;
+}
+
+.helper-div26 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.helper-div27 {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 250px;
+    overflow-y: scroll;
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
+}
+
+#chat-input-fld {
+    height: 70px;
+    width: 40vw;
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
+    font-family: "Comfortaa";
+    font-size: smaller;
+    outline: none;
+}
+
+#chat-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 20vw;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: "Comfortaa";
+    font-size: smaller;
+    background-color: rgb(247 251 255);
     border-radius: 20px;
+    padding: 10px;
+}
+
+.helper-div28 {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px dotted black;
+    border-radius: 20px;
+    background-color: rgb(247 251 255);
+}
+
+.time-msg {
+    font-family: "Comfortaa";
+    font-size: 8px;
 }
 
 /* ---------------------- */
-/* FOOTER */
+/* FIND FRIENDS */
 /* ---------------------- */
 
-footer {
+.helper-div17 {
+    height: 420px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(255 229 229);
+    padding: 40px;
+}
+
+.helper-div18 {
+    display: flex;
+    width: 1000px;
+    overflow-x: scroll;
+    justify-content: left;
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
+}
+
+.helper-div19 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 30px;
+}
+
+.search-fld {
+    width: 250px;
+    height: 40px;
+    margin-bottom: 30px;
+    outline: none;
+    font-family: "Comfortaa";
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    font-weight: 900;
+}
+
+.other-profile-pic {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+/* ---------------------- */
+/* FRIENDS */
+/* ---------------------- */
+
+.helper-div20 {
+    height: 420px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(255 229 229);
+    padding: 40px;
+}
+
+/* .helper-div21 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: scroll;
+}*/
+
+.helper-div22 {
+    font-family: "Comfortaa";
+}
+
+.wrapper {
+    border: 2px solid rgb(254 254 255);
+    border-radius: 10px;
+    height: 40vh;
+    width: 30vw;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+}
+
+.helper-div23 {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted black;
+    width: 300px;
     height: 150px;
+}
+
+.helper-div24 {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.helper-div25 {
+    margin-top: 10px;
+}
+
+.title {
+    text-align: center;
+    padding-bottom: 10px;
 }
