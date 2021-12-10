@@ -1,82 +1,80 @@
-import { Component } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default class ResetPassword extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stage: 1,
-            error: false,
-        };
-    }
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    }
-    submitStage1() {
+export default function ResetPassword() {
+    const [stage, setStage] = useState(1);
+    const [error, setError] = useState(false);
+    const [email, setEmail] = useState();
+    const [newPass, setNewPass] = useState();
+    const [verCode, setVerCode] = useState();
+
+    const handleChange = (e) => {
+        if (e.target.name == "email") {
+            setEmail(e.target.value);
+        } else if (e.target.name == "newPass") {
+            setNewPass(e.target.value);
+        } else {
+            setVerCode(e.target.value);
+        }
+    };
+
+    const submitStage1 = () => {
         fetch("/password/reset.json", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
             body: JSON.stringify({
-                email: this.state.email,
+                email: email,
             }),
         })
             .then((resp) => resp.json())
             .then((resp) => {
                 if (resp.success) {
-                    this.setState({
-                        stage: 2,
-                    });
+                    setStage(2);
                 } else {
-                    this.setState({
-                        error: true,
-                    });
+                    setStage(2);
                 }
             });
-    }
-    submitStage2() {
+    };
+
+    const submitStage2 = () => {
         fetch("/password/verification.json", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
             body: JSON.stringify({
-                email: this.state.email,
-                newPass: this.state.newPass,
-                verCode: this.state.verCode,
+                email: email,
+                newPass: newPass,
+                verCode: verCode,
             }),
         })
             .then((resp) => resp.json())
             .then((resp) => {
                 if (resp.success) {
-                    this.setState({
-                        stage: 3,
-                    });
+                    setStage(3);
                 } else {
-                    this.setState({
-                        error: true,
-                    });
+                    setError(true);
                 }
             });
-    }
-    resetPassword() {
-        if (this.state.stage === 1) {
+    };
+
+    const resetPassword = () => {
+        if (stage === 1) {
             return (
                 <>
                     <div className="helper-div9">
                         <input
                             className="submit-field"
                             name="email"
-                            onChange={(e) => this.handleChange(e)}
+                            onChange={(e) => handleChange(e)}
                             placeholder="Email"
                         />
                         <div className="helper-div10">
                             <button
                                 className="submit-btn"
-                                onClick={() => this.submitStage1()}
+                                onClick={() => submitStage1()}
                             >
                                 Submit
                             </button>
@@ -86,7 +84,7 @@ export default class ResetPassword extends Component {
                         </div>
                     </div>
                     <div className="error-message">
-                        {this.state.error && (
+                        {error && (
                             <div className="error">
                                 Oops, something went wrong!
                             </div>
@@ -94,7 +92,7 @@ export default class ResetPassword extends Component {
                     </div>
                 </>
             );
-        } else if (this.state.stage === 2) {
+        } else if (stage === 2) {
             return (
                 <div>
                     <h3>
@@ -104,7 +102,7 @@ export default class ResetPassword extends Component {
                         <input
                             type="password"
                             name="newPass"
-                            onChange={(e) => this.handleChange(e)}
+                            onChange={(e) => handleChange(e)}
                             placeholder="New Password"
                         />
                     </div>
@@ -112,13 +110,13 @@ export default class ResetPassword extends Component {
                         <input
                             type="password"
                             name="verCode"
-                            onChange={(e) => this.handleChange(e)}
+                            onChange={(e) => handleChange(e)}
                             placeholder="Verification code"
                         />
                     </div>
-                    <button onClick={() => this.submitStage2()}>Submit</button>
+                    <button onClick={() => submitStage2()}>Submit</button>
                     <div>
-                        {this.state.error && (
+                        {error && (
                             <div className="error">
                                 Oops, something went wrong!
                             </div>
@@ -126,7 +124,7 @@ export default class ResetPassword extends Component {
                     </div>
                 </div>
             );
-        } else if (this.state.stage === 3) {
+        } else if (stage === 3) {
             return (
                 <div>
                     <h1>Password successfully updated!</h1>
@@ -134,8 +132,6 @@ export default class ResetPassword extends Component {
                 </div>
             );
         }
-    }
-    render() {
-        return <div>{this.resetPassword()}</div>;
-    }
+    };
+    return <div>{resetPassword()}</div>;
 }

@@ -91,7 +91,7 @@ module.exports.getThreeMostRecentUsers = (userId) => {
                 FROM users
                 WHERE id != $1
                 ORDER BY id DESC
-                LIMIT 3`;
+                LIMIT 4`;
     const params = [userId];
     return db.query(q, params);
 };

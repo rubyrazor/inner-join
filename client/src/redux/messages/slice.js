@@ -1,27 +1,25 @@
-export function chatReducer(chatMessages = null, action) {
-    if (action.type == "messages/chatMessages") {
-        console.log("Got here, too!");
+export default function chatReducer(chatMessages = null, action) {
+    if (action.type == "messages/receivedChatMessages") {
         chatMessages = action.payload.chatMessages;
     }
-    if (action.type == "messages/chatMessage") {
-        const newMessage = action.payload.chatMessage;
-        chatMessages = [newMessage, ...chatMessages];
+    if (action.type == "messages/receivedChatMessage") {
+        chatMessages = [action.payload.chatMessage, ...chatMessages];
     }
     return chatMessages;
 }
 
 export function chatMessagesReceived(chatMessages) {
-    console.log("Got here, as well!");
     return {
-        type: "messages/chatMessages",
+        type: "messages/receivedChatMessages",
         payload: { chatMessages },
     };
 }
 
 export function chatMessageReceived(chatMessage) {
-    console.log("Logging chatMessage: ", chatMessage);
     return {
-        type: "messages/chatMessage",
+        type: "messages/receivedChatMessage",
         payload: { chatMessage },
     };
 }
+
+

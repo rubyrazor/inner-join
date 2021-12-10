@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { receiveFriendsAndWannabes } from "../redux/friends/slice";
+import { receivedFriendsAndWannabes } from "../redux/friends/slice";
 
 export default function Friends() {
     const [error, setError] = useState(false);
-
     const dispatch = useDispatch();
     const friends = useSelector(
         (state) =>
@@ -16,16 +15,13 @@ export default function Friends() {
             state.friendsAndWannabes &&
             state.friendsAndWannabes.filter((fw) => !fw.accepted)
     );
-    console.log("Friends", friends);
-    console.log("Wannabes", wannabes);
 
     useEffect(() => {
         if (!(friends || wannabes)) {
             fetch("/api/friends")
                 .then((res) => res.json())
                 .then((resp) => {
-                    console.log("Response fetch friends & wannabes: ", resp);
-                    dispatch(receiveFriendsAndWannabes(resp));
+                    dispatch(receivedFriendsAndWannabes(resp));
                 });
         }
     }, []);

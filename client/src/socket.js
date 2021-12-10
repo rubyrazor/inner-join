@@ -12,12 +12,10 @@ export const init = (store) => {
         socket = io.connect();
 
         socket.on("chatMessages", (msgs) => {
-            console.log("Got here", msgs);
             store.dispatch(chatMessagesReceived(msgs));
         });
 
         socket.on("chatMessage", (msg) => {
-            console.log("socket.js", msg);
             store.dispatch(chatMessageReceived(msg));
         });
     }
