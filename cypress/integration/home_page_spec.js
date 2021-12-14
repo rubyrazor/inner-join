@@ -16,6 +16,6 @@ describe("The Landing Page", () => {
         cy.get('input[name="email"]').type("john.doe@example.com");
         cy.get('input[name="pass"]').type("qwert");
         
-        cy.get('button').should('be.disabled');
+        cy.get('button').should('be.disabled'); 
     });
 });
