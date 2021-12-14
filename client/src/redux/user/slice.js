@@ -6,7 +6,7 @@ export default function userDataReducer(userData = null, action) {
         userData = {...userData, bio: action.payload.bio};
     } 
     if (action.type == "user/receivedProfilePicUrl") {
-        userData = {...userData, bio: action.payload.profilePicUrl};
+        userData = {...userData, profilePicUrl: action.payload.profilePicUrl};
     }
     return userData;
 }

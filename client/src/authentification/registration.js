@@ -37,7 +37,7 @@ export default function Registration() {
                     />
                 </div>
                 <div className="helper-div10">
-                    <button className="submit-btn" onClick={submit}>
+                    <button disabled={!(userInput.first && userInput.last && userInput.email && userInput.pass)} className="submit-btn" onClick={submit}>
                         Submit
                     </button>
                     <Link className="link" to="/login">

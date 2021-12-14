@@ -25,7 +25,7 @@ export default function Login() {
                     />
                 </div>
                 <div className="helper-div10">
-                    <button className="submit-btn" onClick={submit}>
+                    <button className="submit-btn" disabled={!(userInput.email && userInput.pass)} onClick={submit}>
                         Submit
                     </button>
                     <Link className="link" to="/">

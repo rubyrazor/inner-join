@@ -73,7 +73,7 @@ export default function ResetPassword() {
                         />
                         <div className="helper-div10">
                             <button
-                                className="submit-btn"
+                                className="submit-btn" disabled={!email}
                                 onClick={() => submitStage1()}
                             >
                                 Submit

@@ -5,8 +5,8 @@
 
 //REACT
 import ReactDOM from "react-dom";
-import { Welcome } from "./general/welcome";
-import App from "./general/app";
+import { Welcome } from "./welcome";
+import App from "./app";
 //REDUX
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";

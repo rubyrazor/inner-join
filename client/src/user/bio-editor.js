@@ -24,12 +24,9 @@ export default function BioEditor() {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log("Logging response: ", data.bio);
                 dispatch(receivedBio(data.bio));
             });
     }
-
-    console.log("bio", bio);
 
     return (
         <div className="helper-div14">
