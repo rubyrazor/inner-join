@@ -28,10 +28,10 @@ export default function Login() {
                     <button className="submit-btn" disabled={!(userInput.email && userInput.pass)} onClick={submit} data-cy="login-submit-btn">
                         Submit
                     </button>
-                    <Link className="link" to="/">
+                    <Link className="link reset" to="/">
                         Register
                     </Link>
-                    <Link className="link" to="/password/reset" data-cy="login-reset-btn">
+                    <Link className="link reset" to="/password/reset" data-cy="login-reset-btn">
                         Reset Password
                     </Link>
                 </div>

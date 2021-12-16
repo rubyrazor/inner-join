@@ -6,5 +6,5 @@ This is a mock social network.
 
 I built the client side with React using Redux to manage the global state. The user has to register/login to view to application. 
  
-
+![Image registration page](/images/registration.png)
 

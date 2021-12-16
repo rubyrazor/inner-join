@@ -52,7 +52,22 @@ export default function Registration() {
                     >
                         Submit
                     </button>
-                    <Link className="link" to="/login" data-cy="login-btn">
+                    {/* <Link to="/login" data-cy="login-btn">
+                        Login
+                    </Link> */}
+                    <Link
+                        className="link"
+                        to="/login"
+                        data-cy="login-btn"
+                        disabled={
+                            (
+                                userInput.first &&
+                                userInput.last &&
+                                userInput.email &&
+                                userInput.pass
+                            )
+                        }
+                    >
                         Login
                     </Link>
                 </div>

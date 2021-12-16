@@ -134,8 +134,7 @@ header {
     width: 74px;
     height: 40px;
     color: white;
-    background-color: #b4c5d5;
-    /* background-color: rgb(117, 171, 224); */
+    background-color: rgb(180 197 213);
     height: 40px;
     border-radius: 20px;
     border: none;
@@ -149,8 +148,17 @@ header {
     margin-left: 40px;
 }
 
+/* link.disabled {
+    pointer-events: none;
+    background-color: rgb(180 197 213);
+} */
+
 .link:hover {
-    background-color: #bf9fed;
+    background-color: rgb(43 206 255);
+}
+
+.reset {
+    width: 170px;
 }
 
 .error-message {
@@ -518,7 +526,7 @@ favicon {
 }
 
 button:enabled {
-    background-color: rgb(172 124 242);
+    background-color: rgb(43 206 255);
 }
 
 /* ---------------------- */
