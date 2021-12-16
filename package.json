@@ -10,7 +10,8 @@
         "dev": "concurrently \"npm:dev:*\" --kill-others",
         "start": "node server/server.js",
         "test": "jest",
-        "cy:run": "cypress run"
+        "cy:run": "npx cypress run --spec 'cypress/integration/socialnetwork/socialnetwork_complete_spec.js'",
+        "prepare": "husky install"
     },
     "engines": {
         "node": "14"
@@ -71,6 +72,7 @@
     "license": "ISC",
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.1",
-        "cypress-file-upload": "^5.0.8"
+        "cypress-file-upload": "^5.0.8",
+        "husky": "^7.0.4"
     }
 }

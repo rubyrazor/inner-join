@@ -18,3 +18,16 @@ import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(function () {
+    let testSuite = Cypress.env("SUITE");
+    if (!testSuite) {
+        return;
+    }
+
+    const testName = Cypress.mocha.getRunner().test.fullTitle();
+    testSuite = "<" + testSuite + ">";
+    if (!testName.includes(testSuite)) {
+        this.skip();
+    }
+});

@@ -3,11 +3,15 @@
 
 //--------------------------------------------------------------
 
+describe("The Browser", () => {
+    it("has no cookies", () => {
+        cy.clearCookies("session", "session.sig");
+    });
+});
+
+//
 //LANDING PAGE
 describe("The Registration Page", () => {
-    // it("has no cookies", () => {
-    //     cy.clearCookies();
-    // });
 
     // Stores cookies
     Cypress.Cookies.defaults({ preserve: ["session", "session.sig"] });
@@ -44,8 +48,6 @@ describe("The Registration Page", () => {
     it("registers user and routes to profile page if submit button is clicked", () => {
         cy.get("[data-cy=registration-page-submit-btn]").click();
     });
-
-
 });
 
 //
@@ -106,8 +108,9 @@ describe("The Profile Page", () => {
         "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.";
 
     it("allows to add bio", () => {
-        cy.get("[data-cy=profile-page-bio-editor]").type(bio1);
-        cy.get("[data-cy=profile-page-bio-editor]").should("have.value", bio1);
+        cy.get("[data-cy=profile-page-bio-editor]")
+            .type(bio1)
+            .should("have.value", bio1);
         cy.get("[data-cy=save-bio-btn]").click();
 
         cy.get("[data-cy=profile-page-bio]").should("have.text", bio1);
