@@ -3,8 +3,8 @@ import { useState } from "react";
 export default function useSubmit(url, val) {
     const [error, setError] = useState(false);
 
-    const submit = () => {
-        // e.preventDefault() + add event as argument
+    const submit = (e) => {
+        e.preventDefault();
         fetch(url, {
             method: "POST",
             headers: {
@@ -14,7 +14,6 @@ export default function useSubmit(url, val) {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log("Logging in useSubmit: ", data);
                 data.success ? location.replace("/") : setError(true);
             });
     };

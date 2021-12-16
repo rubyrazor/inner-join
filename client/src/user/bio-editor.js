@@ -30,14 +30,14 @@ export default function BioEditor() {
 
     return (
         <div className="helper-div14">
-            {!editorIsVisible && <div className="helper-div6">{bio}</div>}
+            {!editorIsVisible && <div className="helper-div6" data-cy="profile-page-bio">{bio}</div>}
             {!editorIsVisible && !bio && (
-                <button className="submit-btn" onClick={() => toggleTextarea()}>
+                <button className="submit-btn" onClick={() => toggleTextarea()} data-cy="add-bio-btn">
                     Add Bio
                 </button>
             )}
             {!editorIsVisible && bio && (
-                <button className="submit-btn" onClick={() => toggleTextarea()}>
+                <button className="submit-btn" onClick={() => toggleTextarea()} data-cy="edit-bio-btn">
                     Edit Bio
                 </button>
             )}
@@ -47,6 +47,7 @@ export default function BioEditor() {
                         className="bio-editor"
                         onChange={(e) => setDraftBio(e.target.value)}
                         defaultValue={bio}
+                        data-cy="profile-page-bio-editor"
                     />
                     <div className="helper-div15">
                         <button
@@ -55,12 +56,14 @@ export default function BioEditor() {
                                 saveBio();
                                 toggleTextarea();
                             }}
+                            data-cy="save-bio-btn"
                         >
                             Save
                         </button>
                         <button
                             className="submit-btn exit-btn"
                             onClick={() => toggleTextarea()}
+                            data-cy="exit-bio-btn"
                         >
                             Exit
                         </button>

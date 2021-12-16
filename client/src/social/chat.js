@@ -53,7 +53,7 @@ export default function Chat() {
                                             </div>
                                         </div>
                                         <div id="chat-msg">
-                                            <div>{message.message}</div>
+                                            <div data-cy="message-text">{message.message}</div>
                                             <div className="time-msg">
                                                 (
                                                 {message.created_at.slice(
@@ -72,7 +72,7 @@ export default function Chat() {
                                 );
                             })}
                     </div>
-                    <textarea id="chat-input-fld" onKeyDown={keyCheck} />
+                    <textarea id="chat-input-fld" onKeyDown={keyCheck} data-cy="message-input-fld"/>
                 </div>
             </div>
             {error && <div className="error">Oops, something went wrong!</div>}

@@ -7,8 +7,12 @@ export function Welcome() {
     return (
         <div id="helper-div8">
             <h1 id="brand-name">Inner Join.</h1>
-            <img id="logo" src="/logo.png" alt="logo" />
-            <h3 id="jingle">Find someone to share your <br/> most secret data with.</h3>
+            <a href="/">
+                <img id="logo" src="/logo.png" alt="logo" />
+            </a>
+            <h3 id="jingle">
+                Find someone to share your <br /> most secret data with.
+            </h3>
             <BrowserRouter>
                 <div id="helper-div12">
                     <Route exact path="/">

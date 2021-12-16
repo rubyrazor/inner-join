@@ -26,9 +26,10 @@ module.exports.upload = (req, res, next) => {
         .promise();
 
     promise
-        .then(() => {
+        .then((resp) => {
+            console.log("Logging response in s3: ", resp);
             next();
-            fs.unlink(path, () => console.log("File removed"));
+            // fs.unlink(path, () => console.log("File removed"));
         })
         .catch((err) => {
             console.log("Error when uploading", err);

@@ -262,6 +262,9 @@ header {
     margin-left: 50px;
 }
 
+.uploader-submit-btn {
+    margin-top: 20px;
+}
 /* ---------------------- */
 /* Profile Page */
 /* ---------------------- */
@@ -517,3 +520,18 @@ favicon {
 button:enabled {
     background-color: rgb(172 124 242);
 }
+
+/* ---------------------- */
+/* RESET PASSWORD */
+/* ---------------------- */
+
+.helper-div29 {
+    display: flex;
+}
+
+.verification-code-msg {
+    color: green;
+    text-align: center;
+    margin-top: 30px;
+    font-family: "Comfortaa";
+};

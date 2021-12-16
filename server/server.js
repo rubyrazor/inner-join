@@ -94,7 +94,6 @@ io.on("connection", function (socket) {
     }
     db.getLastTenChatMessages()
         .then(({ rows }) => {
-            console.log("TenLastMessages: ", rows);
             socket.emit("chatMessages", rows);
         })
         .catch((err) => {
@@ -127,7 +126,6 @@ io.on("connection", function (socket) {
                     message: message,
                     message_id: message_id,
                     created_at: created_at,
-                    Hello: "Hello",
                 });
             })
             .catch((err) => {

@@ -19,6 +19,7 @@ export default function ProfilePic({ imageSize }) {
                     dispatch(receivedUploaderVisibility(uploaderIsVisible))
                 }
                 className={imageSize}
+                data-cy="profile-page-userpic"
             />
         </>
     );

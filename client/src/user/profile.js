@@ -12,7 +12,7 @@ export default function Profile() {
                 <ProfilePic
                     imageSize="bigProfilePic"
                 />
-                <div className="helper-div4">
+                <div className="helper-div4" data-cy="profile-page-username">
                     {first} {last}
                 </div>
             </div>

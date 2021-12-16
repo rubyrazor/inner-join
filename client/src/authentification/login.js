@@ -9,7 +9,7 @@ export default function Login() {
     return (
         <>
             <div className="helper-div9">
-                <div className="submit-fields">
+                <form className="submit-fields">
                     <input
                         className="submit-field"
                         name="email"
@@ -23,15 +23,15 @@ export default function Login() {
                         onChange={handleChange}
                         placeholder="Password"
                     />
-                </div>
+                </form>
                 <div className="helper-div10">
-                    <button className="submit-btn" disabled={!(userInput.email && userInput.pass)} onClick={submit}>
+                    <button className="submit-btn" disabled={!(userInput.email && userInput.pass)} onClick={submit} data-cy="login-submit-btn">
                         Submit
                     </button>
                     <Link className="link" to="/">
                         Register
                     </Link>
-                    <Link className="link" to="/password/reset">
+                    <Link className="link" to="/password/reset" data-cy="login-reset-btn">
                         Reset Password
                     </Link>
                 </div>

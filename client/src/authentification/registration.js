@@ -9,7 +9,7 @@ export default function Registration() {
     return (
         <>
             <div className="helper-div9">
-                <div className="submit-fields">
+                <form className="submit-fields">
                     <input
                         className="submit-field"
                         name="first"
@@ -35,12 +35,24 @@ export default function Registration() {
                         placeholder="Password"
                         onChange={handleChange}
                     />
-                </div>
+                </form>
                 <div className="helper-div10">
-                    <button disabled={!(userInput.first && userInput.last && userInput.email && userInput.pass)} className="submit-btn" onClick={submit}>
+                    <button
+                        data-cy="registration-page-submit-btn"
+                        disabled={
+                            !(
+                                userInput.first &&
+                                userInput.last &&
+                                userInput.email &&
+                                userInput.pass
+                            )
+                        }
+                        className="submit-btn"
+                        onClick={submit}
+                    >
                         Submit
                     </button>
-                    <Link className="link" to="/login">
+                    <Link className="link" to="/login" data-cy="login-btn">
                         Login
                     </Link>
                 </div>

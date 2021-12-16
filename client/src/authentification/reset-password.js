@@ -73,8 +73,10 @@ export default function ResetPassword() {
                         />
                         <div className="helper-div10">
                             <button
-                                className="submit-btn" disabled={!email}
+                                className="submit-btn"
+                                disabled={!email}
                                 onClick={() => submitStage1()}
+                                data-cy="reset-submit-btn"
                             >
                                 Submit
                             </button>
@@ -95,29 +97,44 @@ export default function ResetPassword() {
         } else if (stage === 2) {
             return (
                 <div>
-                    <h3>
-                        An email with a verification code has been send to you
-                    </h3>
-                    <div>
-                        <input
-                            type="password"
-                            name="newPass"
-                            onChange={(e) => handleChange(e)}
-                            placeholder="New Password"
-                        />
+                    <div className="helper-div29">
+                        <div>
+                            <div>
+                                <input
+                                    className="submit-field"
+                                    type="password"
+                                    name="newPass"
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="New Password"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="submit-field"
+                                    type="password"
+                                    name="verCode"
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="Verification code"
+                                />
+                            </div>
+                        </div>
+                        <button
+                            onClick={() => submitStage2()}
+                            className="submit-btn"
+                            data-cy="verCode-submit-btn"
+                        >
+                            Submit
+                        </button>
                     </div>
-                    <div>
-                        <input
-                            type="password"
-                            name="verCode"
-                            onChange={(e) => handleChange(e)}
-                            placeholder="Verification code"
-                        />
-                    </div>
-                    <button onClick={() => submitStage2()}>Submit</button>
+                    {!error && (
+                        <div className="verification-code-msg">
+                            An email containing a verification code <br /> has
+                            been send to you
+                        </div>
+                    )}
                     <div>
                         {error && (
-                            <div className="error">
+                            <div className="error-message" data-cy="error-msg">
                                 Oops, something went wrong!
                             </div>
                         )}

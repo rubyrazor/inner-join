@@ -27,13 +27,14 @@ export default function Uploader() {
                     console.log(data.url);
                     dispatch(receivedProfilePicUrl(data.url));
                 } else {
+                    console.log(data);
                     setError(true);
                 }
             });
     }
 
     return (
-        <div id="modal" onClick={() => dispatch(receivedUploaderVisibility(uploaderIsVisible))}>
+        <div id="modal" onClick={() => dispatch(receivedUploaderVisibility(uploaderIsVisible))} data-cy="uploader-modal">
             <div id="helper-div1" onClick={(e) => e.stopPropagation()}>
                 <input
                     id="file-upload"
@@ -41,8 +42,9 @@ export default function Uploader() {
                     type="file"
                     accept="image/*"
                     onChange={handleChange}
+                    data-cy="uploader-file-input"
                 />
-                <button className="submit-btn" onClick={upload}>
+                <button className="submit-btn uploader-submit-btn" onClick={upload} data-cy="uploader-submit-btn">
                     Upload
                 </button>
                 <div>

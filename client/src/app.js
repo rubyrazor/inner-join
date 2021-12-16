@@ -44,16 +44,16 @@ export default function App() {
                     <Link className="link2" to="/">
                         Profile
                     </Link>
-                    <Link className="link2" to="/users">
+                    <Link className="link2" to="/users" data-cy="find-people-btn">
                         Find Friends
                     </Link>
-                    <Link className="link2" to="/friends">
+                    <Link className="link2" to="/friends" data-cy="show-friends-btn">
                         Friendships
                     </Link>
-                    <Link className="link2" to="/chat">
+                    <Link className="link2" to="/chat" data-cy="show-chat-btn">
                         Chat
                     </Link>
-                    <a className="link2" href="/logout">
+                    <a className="link2" href="/logout" data-cy="logout-btn">
                         Logout
                     </a>
                     <ProfilePic

@@ -53,7 +53,7 @@ export default function Friends() {
 
     return (
         <div className="helper-div20">
-            <div className="helper-div22">
+            <div className="helper-div22" data-cy="friendships">
                 <div className="title">Friendships</div>
                 <div className="wrapper">
                     <div className="helper-div21">
@@ -92,7 +92,7 @@ export default function Friends() {
                     </div>
                 </div>
             </div>
-            <div className="helper-div22">
+            <div className="helper-div22" data-cy="friendship-requests">
                 <div className="title">Friendship Requests</div>
                 <div className="wrapper">
                     <div className="helper-div21">

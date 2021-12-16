@@ -52,8 +52,9 @@ export default function FindPeople() {
                 placeholder="Search"
                 type="text"
                 onChange={(e) => setSearchTerm(e.target.value)}
+                data-cy="friends-search-fld"
             />
-            <div className="helper-div18">
+            <div className="helper-div18" data-cy="found-people-container">
                 {users &&
                     users.map((user) => {
                         return (
@@ -67,7 +68,7 @@ export default function FindPeople() {
                                         }
                                     />
                                 </Link>
-                                <div className="helper-div4">
+                                <div className="helper-div4" data-cy="other-user-names">
                                     {user.first} {user.last}
                                 </div>
                             </div>
