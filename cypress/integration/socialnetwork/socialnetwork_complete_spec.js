@@ -1,8 +1,3 @@
-//To Do
-// #2 Find a better way to check whether user names match search
-
-//--------------------------------------------------------------
-
 describe("The Browser", () => {
     it("has no cookies", () => {
         cy.clearCookies("session", "session.sig");
@@ -10,38 +5,29 @@ describe("The Browser", () => {
 });
 
 //
-//LANDING PAGE
+// REGISTRATION PAGE
 describe("The Registration Page", () => {
 
-    // Stores cookies
     Cypress.Cookies.defaults({ preserve: ["session", "session.sig"] });
-    //
-    // Now  Cypress will log when it alters cookies
     Cypress.Cookies.debug(true);
-    //
 
     it("successfully loads,", () => {
         cy.visit("/");
     });
 
     it("enables the submit button if required input is provided", () => {
-        //disabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="first"]').type("John").should("have.value", "John");
-        //still disabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="last"]').type("Doe").should("have.value", "Doe");
-        //still disabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="email"]')
             .type("john.doe@example.com")
             .should("have.value", "john.doe@example.com");
-        //still disabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="pass"]')
             .type("qwert")
             .should("have.value", "qwert");
-        //enabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.enabled");
     });
 
@@ -66,7 +52,7 @@ describe("The Profile Page", () => {
     });
 
     it("opens modal when image is clicked", () => {
-        cy.get(".bigProfilePic").click(); //[data-cy=profile-page-userpic]
+        cy.get(".bigProfilePic").click();
         cy.get("[data-cy=uploader-modal]").should("be.visible");
     });
 
@@ -82,7 +68,6 @@ describe("The Profile Page", () => {
                 });
             });
         cy.get("[data-cy=uploader-submit-btn]").click();
-        //check whether positive response (If I want to separate upload form display of image)
         cy.wait(10000);
     });
 
@@ -132,7 +117,7 @@ describe("The Profile Page", () => {
     });
 });
 
-//
+
 // FIND PAGE
 describe("The Find Page", () => {
     it("successfully opens", () => {
@@ -190,7 +175,6 @@ describe("The Chat Page", () => {
 
     it("and logs out", () => {
         cy.get("[data-cy=logout-btn]").click();
-        //Check whether it correctly loads landing page
     });
 });
 
@@ -223,7 +207,7 @@ describe("The Reset Password Page", () => {
         cy.get("[data-cy=reset-submit-btn]").click();
         cy.get("input[name=newPass]").type("qwert");
         cy.get("input[name=verCode]").type("qwert");
-        //Check whether we got positive response from aws
+
     });
 
     it("shows error message because wrong verification code was submitted", () => {
@@ -231,13 +215,3 @@ describe("The Reset Password Page", () => {
         cy.get("[data-cy=error-msg]");
     });
 });
-
-// it("deletes test user", () => {
-//     cy.task("query", {
-//         sql: `
-//         DELETE * FROM user
-//         WHERE first = $1
-//         `,
-//         values: ["John"],
-//     });
-// });
