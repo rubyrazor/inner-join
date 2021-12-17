@@ -226,7 +226,7 @@ describe("The Reset Password Page", () => {
         //Check whether we got positive response from aws
     });
 
-    it("shows error message because wrong verificatin Code was submitted", () => {
+    it("shows error message because wrong verification code was submitted", () => {
         cy.get("[data-cy=verCode-submit-btn]").click();
         cy.get("[data-cy=error-msg]");
     });
