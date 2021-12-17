@@ -24,7 +24,7 @@ describe("The Registration Page", () => {
         cy.visit("/");
     });
 
-    it("submit button is enabled if required input is provided", () => {
+    it("enables the submit button if required input is provided", () => {
         //disabled
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="first"]').type("John").should("have.value", "John");
@@ -96,7 +96,7 @@ describe("The Profile Page", () => {
             .should("include", "https://");
     });
 
-    it("opens bio-editor on click", () => {
+    it("opens bio-editor when clicking 'Add Bio'-button", () => {
         cy.get("[data-cy=add-bio-btn]").click();
         cy.get("[data-cy=profile-page-bio-editor]").should("exist");
     });
