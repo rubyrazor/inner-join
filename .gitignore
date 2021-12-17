@@ -7,3 +7,4 @@ bundle.cs
 cypress/screenshots
 cypress/videos
 TODO
+.husky
