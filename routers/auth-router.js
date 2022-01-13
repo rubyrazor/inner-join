@@ -33,7 +33,7 @@ router.post("/registration.json", (req, res) => {
             });
         })
         .catch((err) => {
-            console.log("Exception in /register route", err);
+            console.log("Exception thrown in /register route", err);
             res.json({ error: true });
         });
 });
@@ -45,7 +45,6 @@ router.post("/login.json", (req, res) => {
     
     db.getStoredPassword(email)
         .then((resp) => {
-            console.log(resp);
             if (resp.rows.length < 1) {
                 res.json({
                     error: true,
@@ -57,7 +56,6 @@ router.post("/login.json", (req, res) => {
         })
         .then((resp) => {
             if (resp) {
-                console.log(resp);
                 db.getUserIdByEmail(email)
                     .then((resp) => {
                         userId = resp.rows[0].id;
@@ -66,7 +64,7 @@ router.post("/login.json", (req, res) => {
                         res.json(resp);
                     })
                     .catch((err) => {
-                        console.log("Exception in /login route: ", err);
+                        console.log("Exception thrown in /login route: ", err);
                     });
             } else {
                 res.json({

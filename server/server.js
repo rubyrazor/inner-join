@@ -33,15 +33,13 @@ const io = require("socket.io")(server, {
 // ----------
 app.use(compression());
 
-// Defines path with help of .join; works better than ""../client/public" (But only works in node-land = server-side)
+// Defines path with the join-method; works better than "../client/public" (only works in node-land = server-side).
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 // Parses JSON-format request bodies.
 app.use(express.json());
 
-//
-
-// Initial configuration of cookie session.
+// Initial configuration of cookie-session.
 const cookieSessionMiddleware = cookieSession({
     secret: COOKIE_SECRET,
     maxAge: 1000 * 60 * 60 * 24 * 14,

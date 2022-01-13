@@ -63,14 +63,14 @@ header {
     grid-template-rows:repeat(10, 10vh); */
 }
 
-#brand-name {
+#social-network-name {
     grid-column: 4/8;
     grid-row: 1/2;
     font-family: "Comfortaa";
     font-size: 50px;
 }
 
-#jingle {
+#social-network-slogan {
     grid-column: 4/8;
     grid-row: 5/6;
     font-family: "Comfortaa";

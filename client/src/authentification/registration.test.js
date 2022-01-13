@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-// import  {toBeDisabled} from "@testing-library/jest-dom";
 import Registration from "./registration";
 import { BrowserRouter } from "react-router-dom";
 
