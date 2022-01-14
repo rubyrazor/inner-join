@@ -44,7 +44,7 @@ module.exports.storeVerCode = (email, verCode) => {
 module.exports.verifyVerCode = (email) => {
     const q = `SELECT ver_code FROM verification
                 WHERE (email = $1)
-                AND (CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes')
+                AND (CURRENT_TIMESTAMP - created_at < INTERVAL '15 minutes')
                 ORDER BY created_at DESC
                 LIMIT 1`;
     const params = [email];

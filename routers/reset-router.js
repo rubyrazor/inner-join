@@ -1,15 +1,10 @@
-//TO DOs
-// #1 Add 10 minute time limit to SQL query
-// ----------------------------------------------------
-
 const express = require("express");
 const router = express.Router();
-// const { requireNotLoggedIn } = require("../middleware/auth");
 const { hash } = require("../bc");
 const db = require("../db/db");
-// Password reset
+// Generates a cryptographically strong random string
 const cryptoRandomString = require("crypto-random-string");
-// Automatically send password-reset-email
+// Automatically sends email to reset password
 const { sendEmail } = require("../server/ses.js");
 
 module.exports.resetRouter = router;
@@ -35,7 +30,7 @@ router.post("/password/reset.json", (req, res) => {
         })
         .catch((err) => {
             console.log(
-                "Exception thrown in /passwords/reset.json in reset-route.js: ",
+                "Exception thrown in /passwords/reset.json route: ",
                 err
             );
             res.sendStatus(500);
@@ -58,13 +53,12 @@ router.post("/password/verification.json", (req, res) => {
                 })
                 .catch((err) => {
                     console.log(
-                        "Exception thrown in router.post, reset-router.js: ",
+                        "Exception thrown in /password/verification.json route: ",
                         err
                     );
                     res.json({ success: false });
                 });
         } else {
-            console.log("Ended up in the else");
             res.json({ success: false });
         }
     });
