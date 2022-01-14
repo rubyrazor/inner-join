@@ -7,7 +7,6 @@ describe("The Browser", () => {
 //
 // REGISTRATION PAGE
 describe("The Registration Page", () => {
-
     Cypress.Cookies.defaults({ preserve: ["session", "session.sig"] });
     Cypress.Cookies.debug(true);
 
@@ -17,13 +16,13 @@ describe("The Registration Page", () => {
 
     it("enables the submit button if required input is provided", () => {
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
-        cy.get('input[name="first"]').type("John").should("have.value", "John");
+        cy.get('input[name="first"]').type("Jane").should("have.value", "Jane");
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="last"]').type("Doe").should("have.value", "Doe");
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="email"]')
-            .type("john.doe@example.com")
-            .should("have.value", "john.doe@example.com");
+            .type("jane.doe@example.com")
+            .should("have.value", "jane.doe@example.com");
         cy.get("[data-cy=registration-page-submit-btn]").should("be.disabled");
         cy.get('input[name="pass"]')
             .type("qwert")
@@ -42,7 +41,7 @@ describe("The Profile Page", () => {
     it("displays default-image, username and bio correctly", () => {
         cy.get("[data-cy=profile-page-username]").should(
             "have.text",
-            "John Doe"
+            "Jane Doe"
         );
         cy.get("[data-cy=profile-page-userpic]")
             .should("have.attr", "src")
@@ -58,12 +57,12 @@ describe("The Profile Page", () => {
 
     //UPLOADER
     it("uploads image", () => {
-        cy.fixture("testPic3.png")
+        cy.fixture("testPic4.png")
             .then(Cypress.Blob.base64StringToBlob)
             .then((fileContent) => {
                 cy.get("[data-cy=uploader-file-input]").attachFile({
                     fileContent: fileContent,
-                    fileName: "testPic3.png",
+                    fileName: "testPic4.png",
                     mimeType: "image/png",
                 });
             });
@@ -117,7 +116,6 @@ describe("The Profile Page", () => {
     });
 });
 
-
 // FIND PAGE
 describe("The Find Page", () => {
     it("successfully opens", () => {
@@ -126,11 +124,13 @@ describe("The Find Page", () => {
         cy.get("[data-cy=found-people-container]")
             .children()
             .should("have.length", 4);
+        cy.wait(500);
     });
 
     it("searches for users and displays them correctly", () => {
         cy.get("[data-cy=friends-search-fld]").type("a");
         cy.get("[data-cy=other-user-names]").contains("A"); //#2
+        cy.wait(500);
     });
 });
 
@@ -185,7 +185,7 @@ describe("The Login Page", () => {
     });
 
     it("and login works", () => {
-        cy.get("input[name=email]").type("john.doe@example.com");
+        cy.get("input[name=email]").type("jane.doe@example.com");
         cy.get("input[name=pass]").type("qwert");
         cy.get("[data-cy=login-submit-btn]").click();
     });
@@ -203,11 +203,10 @@ describe("The Reset Password Page", () => {
     });
 
     it("enters new password and verification code successfully", () => {
-        cy.get("input[name=email]").type("john.doe@example.com");
+        cy.get("input[name=email]").type("jane.doe@example.com");
         cy.get("[data-cy=reset-submit-btn]").click();
         cy.get("input[name=newPass]").type("qwert");
         cy.get("input[name=verCode]").type("qwert");
-
     });
 
     it("shows error message because wrong verification code was submitted", () => {
