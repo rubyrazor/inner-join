@@ -48,7 +48,7 @@ Key security measures are put in place. The _bcrypt_ library allows for [salted 
 
 ### Testing
 
-The application provides end-to-end (E2E) and unit testing. I use _Cypress_ to build an E2E test mocking all aspects of a real user interaction with the application. To ensure that changes to the code don't break any of the existing functionality, I use the _husky_ library to implement git hooks, thus ensuring that the E2E test runs every time new code is pushed to GitHub. In addition I provide unit tests written with _Jest_ for key components of the application.
+The application provides end-to-end (E2E) and unit testing. I use _Cypress_ to build an E2E test mocking all aspects of a real user interaction with the application. To ensure that changes to the code don't break any of the existing functionality, I use the _husky_ library to implement git hooks, thus ensuring that the E2E test runs every time new code is pushed to GitHub. In addition I provide unit tests written with _React-Testing-Library_ and _Jest_ for key components of the application.
 
 ## How to use
 
