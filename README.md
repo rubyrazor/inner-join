@@ -2,6 +2,8 @@
 
 # Inner Join.
 
+![Registration page](/readme-material/registration.png | width=70vw)
+
 _Inner join._ is a social network where users can register, make friends and chat with each other. I built the network in an intense three-week project at SPICED academy which I attended from Sept 2021 to Dec 2021.
 
 ## Features
@@ -52,9 +54,3 @@ To fork and work with this project:
 3. Install dependencies: `npm install`
 
 4. Start development server: `npm run dev`
-
----
-
-![Registration page](/readme-material/registration.png)
-</br>
-![Registration](/readme-material/registration.gif)
