@@ -28,9 +28,9 @@ The social network allows users to
 [![PostgreSQL Badge](https://img.shields.io/badge/-PostgreSQL-4169E1?style=for-the-badge&labelColor=f7efef&logo=postgreSQL&logoColor=4169E1)](#)
 </br>
 
-### Client & Server
-The client-side is built as a sigle-page application with _React_. I use _Redux_ to manage the application's state information and _Webpack_ to compile the code. The _socket.io_ library which enables real-time, two-way communication between clients and servers is the basis for a smooth and instantaneous chat experience. 
-The server-side is built with _Express_ which runs in a _Node_ environment. I use _AWS S3_ as a reliable, centralised and permanent storage solution for users' profile pics. _Uid-safe_ allows me to generate unique pic names before uploading. Other user information is stored in a local database managed with _PostgreSQL_. This database is populated with 200+ fake users.
+### Development
+The **client-side** is built as a sigle-page application with _React_. I use _Redux_ to manage the application's state information and _Webpack_ to compile the code. The _socket.io_ library which enables real-time, two-way communication between clients and servers is the basis for a smooth and instantaneous chat experience. </br>
+The **server-side** is built with _Express_ which runs in a _Node_ environment. I use _AWS S3_ as a reliable, centralised and permanent storage solution for users' profile pics. _Uid-safe_ allows me to generate unique pic names before uploading. Other user information is stored in a local database managed with _PostgreSQL_. This database is populated with 200+ fake users.
 
 ### Security
 Key security measures are put in place. The _bcrypt_ library allows for [salted password hashing](https://crackstation.net/hashing-security.htm#normalhashing) and validation of user input. I use _AWS SES_ to authenticate users in case they forgot their passwords. Users are send a random single-use verification code generated with _crypto-random-string_ via email that expires after 15 min. To prevent SQL-injection attacks I employ the _node-postgres-module_ to escape user input. Denial-of-Service attacks are averted by setting an upload-limit of 2MB for profile pics.
