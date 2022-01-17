@@ -29,7 +29,8 @@ The social network allows users to
 </br>
 
 ### Development
-The **client-side** is built as a sigle-page application with _React_. I use _Redux_ to manage the application's state information and _Webpack_ to compile the code. The _socket.io_ library which enables real-time, two-way communication between clients and servers is the basis for a smooth and instantaneous chat experience. </br>
+The **client-side** is built as a sigle-page application with _React_. I use _Redux_ to manage the application's state information and _Webpack_ to compile the code. The _socket.io_ library which enables real-time, two-way communication between clients and servers is the basis for a smooth and instantaneous chat experience.
+</br>
 The **server-side** is built with _Express_ which runs in a _Node_ environment. I use _AWS S3_ as a reliable, centralised and permanent storage solution for users' profile pics. _Uid-safe_ allows me to generate unique pic names before uploading. Other user information is stored in a local database managed with _PostgreSQL_. This database is populated with 200+ fake users.
 
 ### Security
