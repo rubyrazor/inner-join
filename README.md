@@ -2,7 +2,7 @@
 
 # Inner Join.
 
-![Registration page](/readme-material/registration.png | width=70vw)
+![Registration page](/readme-material/registration.png | width=70)
 
 _Inner join._ is a social network where users can register, make friends and chat with each other. I built the network in an intense three-week project at SPICED academy which I attended from Sept 2021 to Dec 2021.
 
