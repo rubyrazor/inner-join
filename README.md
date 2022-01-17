@@ -30,6 +30,10 @@ The social network allows users to
 [![Node.js Badge](https://img.shields.io/badge/-Node.js-3C873A?style=for-the-badge&labelColor=302d2d&logo=node.js&logoColor=3C873A)](#)
 [![Amazon AWS Badge](https://img.shields.io/badge/-Amazon%20AWS-232F3E?style=for-the-badge&labelColor=white&logo=amazon%20aws&logoColor=232F3E)](#)
 [![PostgreSQL Badge](https://img.shields.io/badge/-PostgreSQL-4169E1?style=for-the-badge&labelColor=f7efef&logo=postgreSQL&logoColor=4169E1)](#)
+[![Cypress Badge](https://img.shields.io/badge/-cypress-17202C?style=for-the-badge&labelColor=f7efef&logo=cypress&logoColor=17202C)](#)
+[![Jest Badge](https://img.shields.io/badge/-Jest-C21325?style=for-the-badge&labelColor=000000&logo=jest&logoColor=C21325)](#)
+[![React Testing Library Badge](https://img.shields.io/badge/-React%20Testing%20Library-E33332?style=for-the-badge&labelColor=000000&logo=testing-library&logoColor=E33332)](#)
+
 </br>
 
 ### Development
