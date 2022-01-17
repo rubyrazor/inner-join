@@ -15,7 +15,7 @@ The social network allows users to
 - view the profiles of other users,
 - befriend other users,
 - chat with user users,
-- find other other users through a username search.
+- find other users via a username search.
 
 ## Stack
 [![React.js Badge](https://img.shields.io/badge/-React.js-61DAFB?style=for-the-badge&labelColor=302d2d&logo=react&logoColor=61DAFB)](#)
