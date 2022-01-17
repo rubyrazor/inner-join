@@ -3,9 +3,9 @@
 
 # Inner Join.
 
-![Registration page](/readme-material/registration.png)
-
 Inne join. is a social network where users can register, make friends and chat with each other. I built the network in an intense three-week project at SPICED academy which I attended from Sept 2021 to Dec 2021.
+
+![Registration page](/readme-material/registration.png)
 
 ## Features
 The social network allows users to
@@ -28,6 +28,7 @@ Key security measures are put in place. The _bcrypt_ library allows for [salted 
 
 ### Testing
 The application provides end-to-end (E2E) and unit testing. I use _Cypress_ to build an E2E test mocking all aspects of a real user interaction with the application. To ensure that changes to the code don't break any of the existing functionality, I use the _husky_ library to implement git hooks, thus ensuring that the E2E test runs every time new code is pushed to GitHub. In addition I provide unit tests written with _Jest_ for key components  of the application.
+
 
 [![React.js Badge](https://img.shields.io/badge/-React.js-61DAFB?style=for-the-badge&labelColor=302d2d&logo=react&logoColor=61DAFB)](#)
 [![Redux.js Badge](https://img.shields.io/badge/-Redux.js-764ABC?style=for-the-badge&labelColor=black&logo=redux&logoColor=764ABC)](#)
