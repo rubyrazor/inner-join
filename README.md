@@ -57,6 +57,4 @@ To fork and work with this project:
 
 ![Registration page](/readme-material/registration.png)
 </br>
-![Registration] (/readme-material/registration.gif)
-</br>
-![Logged-in Experience](/readme-material/logged-in-experience.gif)
+![Registration](/readme-material/registration.gif)
