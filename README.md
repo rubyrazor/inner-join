@@ -8,7 +8,7 @@ _Inner join._ is a social network where users can register, make friends and cha
 <p align="center">
 <img src="/readme-material/registration.png" width="700" alt="Registration page">
 </p>
-</br>
+
 ## Features
 
 The social network allows users to
