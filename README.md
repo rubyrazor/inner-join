@@ -2,12 +2,13 @@
 
 # Inner Join.
 
+
+_Inner join._ is a social network where users can register, make friends and chat with each other. I built the network in an intense three-week project while attenfing a full-time coding bootcamp with SPICED Academy, Berlin, from Sept 2021 to Dec 2021.
+
 <p align="center">
 <img src="/readme-material/registration.png" width="700" alt="Registration page">
 </p>
-
-_Inner join._ is a social network where users can register, make friends and chat with each other. I built the network in an intense three-week project at SPICED academy which I attended from Sept 2021 to Dec 2021.
-
+</br>
 ## Features
 
 The social network allows users to
