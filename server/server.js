@@ -63,6 +63,12 @@ app.use(
 // Parses JSON-format request bodies.
 app.use(express.json());
 
+// Protects against clickjacking.
+app.use((req, res, next) => {
+    res.setHeader("x-frame-options", "deny");
+    next();
+});
+
 // ----------
 // ROUTERS
 // ----------
