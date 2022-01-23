@@ -34,8 +34,6 @@ The social network allows users to
 [![Socket.io Badge](https://img.shields.io/badge/-Socket.IO-010101?style=for-the-badge&labelColor=white&logo=socket.io&logoColor=010101)](#)
 [![Webpack Badge](https://img.shields.io/badge/-Webpack-8DD6F9?style=for-the-badge&labelColor=black&logo=webpack&logoColor=8DD6F9)](#)
 
-</br>
-
 ### Development
 
 The **client-side** is built as a sigle-page application (SAP) with _React_. I use _Redux_ to manage the application's state information, as well as _Webpack_ and _Babel_ to bundle and compile the code. The _Socket.io_ library which enables real-time, two-way communication between clients and servers is the basis for a smooth and instantaneous chat experience.
