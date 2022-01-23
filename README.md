@@ -7,7 +7,6 @@ A social network where users can register, make friends and chat with each other
 <p align="center">
 <img src="/readme-material/registration.png" width="700" alt="Registration page">
 </p>
-
 ## Features
 
 The social network allows users to
