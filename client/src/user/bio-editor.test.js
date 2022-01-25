@@ -22,8 +22,6 @@ test("If no bio is passed to BioEditor, an 'Add'-button is rendered", () => {
     expect(container.querySelector("button").innerHTML).toContain("Add Bio");
 });
 
-//Question: Why is it not necessary to mock bio and editorIsVisible? Should I mock them?
-
 test("If bio is passed, an 'Edit'-button is rendered", () => {
     // const dispatch = useDispatch();
     // dispatch(receivedBio("Some bio"));

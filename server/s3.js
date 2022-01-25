@@ -29,10 +29,10 @@ module.exports.upload = (req, res, next) => {
         .then((resp) => {
             console.log("Logging response in s3: ", resp);
             next();
-            // fs.unlink(path, () => console.log("File removed"));
+            fs.unlink(path, () => console.log("File removed!"));
         })
         .catch((err) => {
-            console.log("Error when uploading", err);
+            console.log("Exception thrown when uploading profile pic to AWS S3:", err);
             return res.json({error: true});
         });
 };

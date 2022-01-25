@@ -28,7 +28,6 @@ router.get("/users/:searchTerm", (req, res) => {
 
     db.getUsersMatchingSearchTerm(userId, searchTerm)
         .then((resp) => {
-            console.log(resp.rows);
             res.json(resp.rows);
         })
         .catch((err) => {

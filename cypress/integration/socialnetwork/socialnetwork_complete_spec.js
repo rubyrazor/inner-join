@@ -57,12 +57,12 @@ describe("The Profile Page", () => {
 
     //UPLOADER
     it("uploads image", () => {
-        cy.fixture("testPic4.png")
+        cy.fixture("jane-doe.png")
             .then(Cypress.Blob.base64StringToBlob)
             .then((fileContent) => {
                 cy.get("[data-cy=uploader-file-input]").attachFile({
                     fileContent: fileContent,
-                    fileName: "testPic4.png",
+                    fileName: "jane-doe.png",
                     mimeType: "image/png",
                 });
             });

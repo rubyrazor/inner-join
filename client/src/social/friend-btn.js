@@ -5,7 +5,6 @@ export default function FriendBtn({ id }) {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        console.log(id);
         fetch(`/api/relation/${id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -33,7 +32,6 @@ export default function FriendBtn({ id }) {
 
     const handleChange = () => {
         const message = btnText.split(" ")[0];
-        console.log(message);
         fetch(`/api/relation/update/${id}`, {
             method: "POST",
             headers: {

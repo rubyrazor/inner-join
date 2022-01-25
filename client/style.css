@@ -58,9 +58,6 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: grid;
-    grid-template-columns: repeat(10, 10vw);
-    grid-template-rows:repeat(10, 10vh); */
 }
 
 #social-network-name {
@@ -103,7 +100,6 @@ header {
     margin-bottom: 10px;
     font-family: "Comfortaa";
     font-weight: 900;
-    /* text-align: center; */
     border: none;
     border-bottom: 0.5px dotted lightslategrey;
     outline: none;
@@ -126,9 +122,6 @@ header {
     text-align: center;
 }
 
-/* .submit-btn:hover {
-    background-color: rgb(172 124 242);
-} */
 
 .link {
     width: 74px;
@@ -147,11 +140,6 @@ header {
     margin-top: 20px;
     margin-left: 40px;
 }
-
-/* link.disabled {
-    pointer-events: none;
-    background-color: rgb(180 197 213);
-} */
 
 .link:hover {
     background-color: rgb(43 206 255);
@@ -199,7 +187,6 @@ header {
     width: 150px;
     color: white;
     background-color: #b4c5d5;
-    /* background-color: rgb(196 169 235); */
     height: 40px;
     border-radius: 20px;
     border: none;
@@ -469,15 +456,6 @@ textarea {
     background-color: rgb(255 229 229);
     padding: 40px;
 }
-
-/* .helper-div21 {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: scroll;
-}*/
 
 .helper-div22 {
     font-family: "Comfortaa";

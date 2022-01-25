@@ -12,11 +12,3 @@ export default function useForm() {
 
     return [userInput, handleChange];
 }
-
-// -------
-// const handleImageAdd = (e) => setUserInput({
-//     ...userInput, 
-//     [e.target.name]: e.target.files[0]
-// })
-
-// WOuld have to add this to the return statement

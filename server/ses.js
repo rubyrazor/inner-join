@@ -10,7 +10,7 @@ if (process.env.NODE_ENV == "production") {
 const ses = new aws.SES({
     accessKeyId: secrets.AWS_KEY,
     secretAccessKey: secrets.AWS_SECRET,
-    region: "eu-west-1", // Make sure this corresponds to the region in which you have verified your email address (or 'eu-west-1' if you are using the Spiced credentials)
+    region: "eu-west-1", // Must correspond to the region in which you have verified your email address (or 'eu-west-1' if you are using the Spiced credentials)
 });
 
 module.exports.sendEmail = (email, subject, body) => {
@@ -32,6 +32,6 @@ module.exports.sendEmail = (email, subject, body) => {
             },
         })
         .promise()
-        .then(() => console.log("it worked!"))
+        .then(() => console.log("Email has been sent!"))
         .catch((err) => console.log(err));
 };

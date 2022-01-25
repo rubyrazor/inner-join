@@ -10,7 +10,6 @@ router.get("/api/relation/:id", (req, res) => {
 
     db.getRelation(id, userId)
         .then((resp) => {
-            console.log(resp);
             if (resp.rows.length < 1) {
                 res.json({
                     status: 0,
@@ -46,10 +45,6 @@ router.post("/api/relation/update/:id", (req, res) => {
     const { id: otherId } = req.params;
     const { userId } = req.session;
     const { message } = req.body;
-    console.log("/api/relation/update/:id got called!");
-    console.log(otherId);
-    console.log(userId);
-    console.log(message);
 
     db.updateRelation(message, otherId, userId)
         .then(() => {
@@ -69,11 +64,9 @@ router.post("/api/relation/update/:id", (req, res) => {
 });
 
 router.get("/api/friends", (req, res) => {
-    console.log("Got here");
     const { userId } = req.session;
     db.getFriendsAndWannabes(userId)
         .then((resp) => {
-            console.log("Logging response in getFriendsAndWannabes: ", resp.rows);
             res.json(resp.rows);
         })
         .catch((err) => {

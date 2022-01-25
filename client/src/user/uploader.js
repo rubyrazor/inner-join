@@ -24,10 +24,8 @@ export default function Uploader() {
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    console.log(data.url);
                     dispatch(receivedProfilePicUrl(data.url));
                 } else {
-                    console.log(data);
                     setError(true);
                 }
             });

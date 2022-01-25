@@ -4,9 +4,6 @@ const db = require("../db/db");
 const s3 = require("../server/s3");
 const path = require("path");
 
-// ---------
-//Multer
-// ---------
 const multer = require("multer");
 const uidSafe = require("uid-safe");
 
@@ -61,12 +58,9 @@ router.post(
     (req, res) => {
         const { userId } = req.session;
         const url = `https://s3.amazonaws.com/spicedling/${req.file.filename}`;
-        console.log("Logging userId: ", userId);
-        console.log("Logging url: ", url);
 
         db.updateProfilePic(userId, url)
             .then((resp) => {
-                console.log("Logging resp: ", resp);
                 if (resp.rows < 1) {
                     res.json({
                         error: true,
