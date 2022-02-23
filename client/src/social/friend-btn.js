@@ -8,7 +8,6 @@ export default function FriendBtn({ id }) {
         fetch(`/api/relation/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log("Logging received data: ", data);
                 if (data.status === 0) {
                     setBtnText("Make Friend Request");
                 } else if (data.status === 1) {

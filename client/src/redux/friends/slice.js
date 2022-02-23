@@ -6,7 +6,6 @@ export default function friendsAndWannabesReducer(friendsAndWannabes=null, actio
 }
 
 export function receivedFriendsAndWannabes(friendsAndWannabes) {
-    console.log("Logging friends and Wannbes: ", friendsAndWannabes);
     return {
         type: "friends/receivedFriendsAndWannabes",
         payload: { friendsAndWannabes },
