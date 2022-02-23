@@ -1,8 +1,3 @@
-//TO DO
-// #1 { rows }
-// #2 error?.display
-
-
 //REACT
 import ReactDOM from "react-dom";
 import { Welcome } from "./welcome";
